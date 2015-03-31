@@ -1,0 +1,131 @@
+\section{Measuring app behavior}
+
+Anomalous behavior of a smartphone may be due to malicious adulteration of an application or
+the operating system, or installed during the hardware manufacturing chain.
+In order to be able to detect this
+behavior, we first need to establish baseline measurements for 
+normal behavior. We focus on metrics that are observable 
+without requiring inspection of the app's source or binary code
+because obfuscation techniques are very sophisticated and will continue to be developed.
+We have enhanced existing debugging with additional internal sensor measurements to inspect app behavior.
+Aggregate metrics, such as battery voltage and CPU usage are easy to collect.  However,
+they can also be influenced by random and extraneous factors.
+
+\subsection{Battery voltage}
+A proxy metric for the amount of remaining 
+energy in the battery. Any kind of activity on the device will result 
+in a change of battery voltage, but the resolution of readings (both 
+in time and in voltage) only allows for coarse, averaged measurements 
+under general, non-lab conditions.
+
+If the circumstances can be controlled tightly, then approaches like 
+\textit{Eprof} \cite{pathak2012fine} can be used to estimate energy consumption 
+of individual activities and assign credit to likely originators.
+
+
+\begin{table}[ht]
+\centering 
+\scriptsize
+\begin{tabular}{|l||l|l|l|}
+    \hline
+    {\bf Time} & {\bf 15s} & {\bf 60s} & {\bf 10min} \\
+    \hline
+    \% of total battery use with ads (avg)  & 81.4\%   & 53.0\%   & \\
+    \hline
+    \% of total battery use with ads (max) & 86.0\%  & 61.5\%  & 11.9\%  \\
+    \hline
+
+\end{tabular}
+\caption{A comparison of battery use with anomalous adware compared with normal.
+The ad was 15 seconds.}
+\end{table}
+
+\subsection{CPU usage}
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=6in]{no_AdsDisplay_10s.png}
+\caption{A typical session in Traceview, the execution log viewer.
+WebViewCoreThread is busy, but main thread's workload is very light.  main is reponsible for 
+the user interface, in general.  WebView is reponsible for rendering ads using the webkit library}
+\label{fig:cpu-no-ad}
+\end{figure*}
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=6in]{traceview.png}
+\caption{A session in Traceview, with anomalous Ads.  Notice that main is doing much more work and
+there are other threads that are getting significant CPU time.}
+\label{fig:cpu-ad}
+\end{figure*}
+
+Similar to battery voltage, monitoring the overall CPU usage 
+(which is an operation requiring no special privileges on Android) 
+can be used to get a coarse-grained overview of consumption. 
+However, the existing debugging and tracing interfaces permit 
+finer-grained views as well. Assuming an app is not designed to 
+evade or complicate debugging deliberately, the 
+\textit{Dalvik Debug Monitoring Service} (DDMS) 
+% https://developer.android.com/tools/debugging/ddms.html
+provides syscall-level insight.
+
+Figure~\ref{fig:cpu} shows a typical  
+session in Traceview, the execution log viewer.
+\yanyan{did you mean Figure~\ref{fig:cpu-no-ad}? how about 
+Figure~\ref{fig:cpu-ad}? We should mention both.}
+% Current figure (MD5 46fbce842e071dfb8f321c9645c6b411) courtesy of Tao Li.
+The app under scrutiny comprises several threads with different 
+temporal activity patterns. Some threads bear names indicative 
+of their performed functions. Colored bars in the threads' activity 
+timelines further detail call-level interactions with app and system 
+libraries, with the height of sub-bars proportional to the frequency 
+of specific calls.
+
+Other log views (not shown) list all of an app's threads, show the 
+call stack for each, and display cumulated and individual CPU time 
+consumption, and relative usage.
+
+
+%%% http://www.sigmobile.org/mobisys/2012/program.php#ses5
+
+\subsection{Network usage}
+
+Android provides a number of built-in features allowing the observation 
+of a device's network conditions for any app granted the 
+\texttt{ACCESS\_NETWORK\_STATE} permission. 
+The \texttt{ConnectivityManager} class lets an app discover the 
+current connectivity status and type (WiFi, 3G, Bluetooth, Ethernet). 
+For cellular access such as LTE or 3G, the \texttt{TelephonyManager} 
+class makes available further detail. The stateful nature of cellular 
+data connectivity is reflected by various indicators of data activity, 
+thereby allowing any app to detect when other apps transfer data over 
+the cellular interface.  The Application Resource Optimizer project
+(ARO\footnote{See \url{https://github.com/attdevsupport/ARO}}) and \cite{Ricciato2010551} 
+provide further insights into what is 
+essentially radio resource control (RRC-based type of diagnostics).
+
+%%% https://developer.android.com/reference/android/telephony/TelephonyManager.html (See NETWORK_TYPE_* and DATA_* states)
+%%% https://developer.android.com/reference/android/net/ConnectivityManager.html (See TYPE_*)
+%%% https://developer.android.com/reference/android/net/NetworkInfo.html#isConnected%28%29
+
+If the device is \textit{rooted} (i.e., system-level administrator 
+privileges are available to the user launching an app), standard 
+packet tracing tools such as \texttt{tcpdump} can be used to 
+record the exact data transferred across network interfaces. 
+However, the precondition is not met on almost any commercial stock 
+firmware.
+% Note: tcpdump doesn't allow inspection of encrypted content either. 
+% There are approaches adding a system-level certificate to MITM on 
+% HTTPS connections see for instance https://github.com/egirault/googleplay-api ,
+% but I think this also requires root.
+
+When packet-level tracing on the device is infeasible, the network 
+connection of the device might be tapped instead. A natural place 
+for this would be a WiFi router acting as the device's gateway. 
+Neither on-device nor on-path packet tracing allow decryption of 
+HTTPS and other encrypted network traffic. However, at least for 
+HTTPS implementations using the system libraries, deliberate 
+man-in-the-middle (MITM) attacks on traffic may be performed 
+by adding a self-provided certificate to the system's certificate 
+storage, and redirecting outgoing HTTPS traffic to a local proxy 
+server using that certificate.

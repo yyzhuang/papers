@@ -1,0 +1,101 @@
+\documentclass{IEEEtran}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{url}
+\usepackage{color}
+\usepackage{array}
+\usepackage{multirow}
+%\usepackage{subfigure}
+
+%%%%%%%%%% verbatim related
+\usepackage{fancyvrb}
+\usepackage{fixltx2e}
+\fvset{framesep=2mm,fontsize=\scriptsize,framerule=.1mm,numbersep=1mm,commandchars=\\\{\}}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\eat}[1]{}
+\newcommand{\rmv}[1]{ #1}
+\newcommand{\sysname}{XXXXXX}
+
+\newif\ifrev
+% comment out the following line after the revision is done
+\revtrue
+\ifrev
+  \newcommand{\cappos}[1]{{\color{red} [Justin: #1]}}
+  \newcommand{\reznik}[1]{{\color{blue} [Leon: #1]}}
+  \newcommand{\weiss}[1]{{\color{green} [Richard: #1]}}
+ \newcommand{\yanyan}[1]{{\color{blue} [Yanyan: #1]}}
+\else
+  \newcommand{\cappos}[1]{}
+  \newcommand{\reznik}[1]{}
+  \newcommand{\weiss}[1]{}
+\fi
+
+\begin{document}
+
+\title{Security Framework for Measuring Trust for Mobile Devices}
+\author{Bart}
+
+\maketitle
+
+
+\begin{abstract}
+Evaluating trust
+ is a challenge for any computer system.  Smartphones and mobile devices install software from a 
+wide range of sources.  As smartphones and other mobile devices become
+more popular, the risks of associated malware will become more significant.
+One of the features of these platforms is that they are rich in
+sensors.  This can be a risk to privacy in that they could leak information about the user.  It can also be an
+advantage if they can be used to evaluate trust.
+%leak information about any malware that is running on it.  
+This paper builds on  \sysname,  a hierarchical security evaluation framework 
+that has been implemented on Android smartphones.
+This paper examines two cases where this framework can be applied.  
+The first case involves monitoring resource utilization.  A malware parasite, e.g. malicious code 
+that has been injected into a useful App or OS utility,
+could manifest as an increase in CPU or communication processing.
+The battery sensor would detect this.  
+Similarly, malware that could produce an intentional or inadvertant effect on sensors such as accelerometers
+and GPS receivers could be detected
+by measuring anomalies in the GPS values.
+Our approach is two-fold: evaluating trust based on metrics and models; and 
+using this evaluation to detect anomalies as a way to improve security in general.
+
+
+\eat{For many people, smartphones and other mobile devices serve as a technical interface to the modern world.
+These smart devices have embedded on-board sensors, such as accelerometers, gyroscopes, GPS sensors, and
+cameras, which are very useful.
+
+This work describes \sysname, a hierarchical framework for checking consistency of sensors 
+from multiple devices.  In addition, it relies on Blursense, a dynamic, fine-grained, flexible access
+control mechanism, acting as a line of defense that allows users to define and addprivacy filters. 
+As a result, the user can expose filtered sensor data to untrusted apps, and researchers can collect 
+data in a way that safeguards users' privacy.}  %end comment
+\end{abstract}
+
+%\IEEEpeerreviewmaketitle
+
+\input{intro} % this will describe the problem and applications, threat models
+\input{umbrella} % summary of section 2 of the Hoffman paper
+\input{iHeartRadio}  % what is anomalous behavior, how are resources monitored?
+\input{OBD} % summary of sensibility platform with some blursense added and
+            %  description of the OBD system
+\input{blursense}
+  % description of the experiments: comparisons of driving data
+\input{results}  
+\input{conclusion}
+
+
+% \section*{Acknowledgment}
+% Weiss was supported by the National Science Foundation through grant TUES-1141341 
+% Cappos was supported by the National Science Foundation through grants 
+
+\bibliographystyle{abbrv}
+\bibliography{bibdata}
+
+\end{document}
+
