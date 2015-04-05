@@ -1,31 +1,51 @@
 \section{Measuring app behavior}
 
-Anomalous behavior of a smartphone may be due to malicious adulteration of an application or
-the operating system, or installed during the hardware manufacturing chain.
+Anomalous behavior of a smartphone may be due to malicious adulteration of an application,
+the operating system, or the hardware during the manufacturing chain.
 In order to be able to detect this
 behavior, we first need to establish baseline measurements for 
 normal behavior. We focus on metrics that are observable 
 without requiring inspection of the app's source or binary code
 because obfuscation techniques are very sophisticated and will continue to be developed.
-We have enhanced existing debugging with additional internal sensor measurements to inspect app behavior.
-Aggregate metrics, such as battery voltage and CPU usage are easy to collect.  However,
-they can also be influenced by random and extraneous factors.
+We have enhanced existing debugging techniques with additional internal sensor measurements to inspect app behavior.
+Aggregate metrics, such as battery voltage, CPU usage, and network usage are easy to collect.  
+Because they measure different components of the system, they can be considered as independent with
+respect to trust metrics.  On the other hand,
+they can also be influenced by random and extraneous factors unrelated to trust.
 
 \subsection{Battery voltage}
-A proxy metric for the amount of remaining 
+The battery voltage is a proxy metric for the amount of remaining 
 energy in the battery. Any kind of activity on the device will result 
 in a change of battery voltage, but the resolution of readings (both 
 in time and in voltage) only allows for coarse, averaged measurements 
 under general, non-lab conditions.
-
 If the circumstances can be controlled tightly, then approaches like 
 \textit{Eprof} \cite{pathak2012fine} can be used to estimate energy consumption 
-of individual activities and assign credit to likely originators.
+of individual activities and assign credit to likely originators.  In the following experiment,
+the battery voltage was measured both with and without ads.
+The ​baseline is the battery consumption playing  music.
+This was recorded for 15 seconds, 60 seconds, and 10 min.  Then, the measurement was repeated
+with both video ads and the music app.  The video ads were only running for the first 15 seconds.
+The smartphone consumes only 31.5mA/sec with no apps running, and 56.5 mA/sec with the radio app
+running.
+But when playing a video ad, the consumption is 169.5mA/sec. 
+In the experiment, the video ad lasted 15 seconds.
+Over the first 15 seconds, the average battery use attributed to the video ads was 81\% of the total
+battery use.  This is very significant and would be difficult to disguise.
+The data are shown in table~\ref{table:battery}
+
 
 
 \begin{table}[ht]
 \centering 
 \scriptsize
+\begin{tabular}{|l|l|}
+  \hline
+  {} & {Rate of consumption(mA)} \\
+  \hline
+  {} & {31.5}\\
+\end{tabular}
+
 \begin{tabular}{|l||l|l|l|}
     \hline
     {\bf Time} & {\bf 15s} & {\bf 60s} & {\bf 10min} \\
@@ -38,6 +58,7 @@ of individual activities and assign credit to likely originators.
 \end{tabular}
 \caption{A comparison of battery use with anomalous adware compared with normal.
 The ad was 15 seconds.}
+\label{table:battery}
 \end{table}
 
 \subsection{CPU usage}
@@ -61,26 +82,27 @@ there are other threads that are getting significant CPU time.}
 
 Similar to battery voltage, monitoring the overall CPU usage 
 (which is an operation requiring no special privileges on Android) 
-can be used to get a coarse-grained overview of consumption. 
+can be used to get a coarse-grained overview of resource utilization. 
 However, the existing debugging and tracing interfaces permit 
 finer-grained views as well. Assuming an app is not designed to 
 evade or complicate debugging deliberately, the 
 \textit{Dalvik Debug Monitoring Service} (DDMS) 
 % https://developer.android.com/tools/debugging/ddms.html
-provides syscall-level insight.
+provides syscall-level insight.  \weiss{Even if an app is trying to evade reverse engineering,
+ would it be hard to eliminate the frequency of syscalls?}
 
-Figure~\ref{fig:cpu} shows a typical  
-session in Traceview, the execution log viewer.
-\yanyan{did you mean Figure~\ref{fig:cpu-no-ad}? how about 
-Figure~\ref{fig:cpu-ad}? We should mention both.}
+Figure~\ref{fig:cpu-no-ad} shows a typical  
+session in Traceview, the execution log viewer.  The main thread is doing almost all of the work
+and making system calls.  Figure~\ref{fig:cpu-ad} shows what happens when a video ad starts 
+executing.  There is a dramatic change in activity and the main app thread is no longer 
+the primary, uniform consumer of CPU cycles.
 % Current figure (MD5 46fbce842e071dfb8f321c9645c6b411) courtesy of Tao Li.
 The app under scrutiny comprises several threads with different 
 temporal activity patterns. Some threads bear names indicative 
 of their performed functions. Colored bars in the threads' activity 
 timelines further detail call-level interactions with app and system 
 libraries, with the height of sub-bars proportional to the frequency 
-of specific calls.
-
+of specific calls.  
 Other log views (not shown) list all of an app's threads, show the 
 call stack for each, and display cumulated and individual CPU time 
 consumption, and relative usage.

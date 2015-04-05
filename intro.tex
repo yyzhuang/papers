@@ -1,18 +1,35 @@
 \section{Introduction}
 
-Android and mobile devices and smartphones are becoming increasingly popular.  The number of mobile phones
-sold has surpassed the number of laptops, and in 2014 it was XXX. Google is reported to have more than
+Android-based mobile devices and smartphones are becoming increasingly popular.  The number of mobile phones
+sold has surpassed the number of laptops, reaching XXXin 2014~\cite{}.  Google is reported\cite{} to have more than
 a billion active users of Android-based devices.  As their popularity increases, so does their value as
-a target for malware.  There are many possible risks.
-Many people use smartphones for financial transactions.  Attackers could get personal
-information for systems administrators and CIOs from their phones and use that for spear phishing.  
-%mention security and privacy issues 
+a target for malware injection.  
+This is particularly true for low cost end smartphones sold in developing countries. According to \cite{}
+some vendors there intentionally create conditions facilitating various security violations in these devices.
+\reznik{I believe I know the ref but I need some time to find it out}
+ There are many possible risks, associated with using compromised devices.  Nowadays due to universal interconnection and 
+interdependability the 
+possible compromise of a mobile device will affect not only applications executed on it and its users but all other parts 
+of a networked computer and communication infrastructure.
+\eat {There are many possible risks.
+Many people use smartphones for financial transactions. 
+ Attackers could get personal information for systems administrators and CIOs from their phones and 
+ use that for spear phishing.  mention security and privacy issues}  % end comment
+With the development of the mobile communication platforms, which share different devices resources, applications and data, 
+this trend will become stronger and stronger. \weiss{should we mention Sensibility?}
+In order to facilitate an introduction of the common cyberinfrastructure and promote collaboration between various devices 
+and users, we need to develop models and methods that will evaluate trust, which other infrastructure parts may have in a 
+particular device or an application, and present this evaluation to other participants. The trust assessment values could 
+be applied to optimize data collection and communication schemes in order to satisfy multiple criteria such as overall 
+system performance and/or resource consumption. Also, a device user may benefit from the trust evaluation as it might 
+provide useful information about areas in need of improvement. It could applied in novel non-signature based intrusion 
+detection techniques too.
 
 The more sophisticated mobile devices become, the more complex the threat model is, and the more opportunities
 for vulnerabilities.  Finding viruses and other malware using software signatures is less and less likely to
-work.  What is needed is a system-wide  aproach that involves assessing trust for the different
+work.  What is needed is a system-wide  approach that involves assessing trust for the different
 components by detecting anomalies in sensor behavior and history of the component.  
-In recent research done by Hoffman, et al.~\cite{hoffman}, the authors developed a hierarchical 
+In recent research done by Hoffman, \weiss{not sure what to say here.} the authors developed a hierarchical 
 mechanism that is scalable and expandable for evaluating security of
 Android smartphones by investigating various sources of information regarding 
 the mobile devices. 
@@ -25,7 +42,12 @@ The sensors in this context refer to any function that
 measures the physical state of the smartphone.  This can include geolocation, accelerometers, CPU 
 utilization, and battery charge.
 
-In this paper we focus on the second and third sources: inspection and comparison of sensor values.
-\yanyan{need more text..}
+\reznik{Here we need to write one-two pars bib review about trust models and evaluation metrics.}
+
+This paper presents the development of the novel hierarchical framework that allows the trust evaluation of the network of 
+mobile devices. As a complex concept, the trust depends on numerous factors. The hierarchical structure allows for an 
+inclusion of various trust evaluation systems used to assess diverse trust components as well as their integration in 
+order to produce the cumulative trust score. Also, it facilitates the framework extension by inclusion of new trust 
+component evaluation, facilitating evaluation results improvement for a particular device as well as the evaluation adaptation to diverse devices and applications. The paper describes the version developed for using on Android-based devices.
 
 The contributions of this paper include. \yanyan{complete..}

@@ -15,8 +15,8 @@ etc.
 Our vehicular data collection consists of a process on a mobile 
 device that directly communicates with in-vehicle sensors and collects sensor 
 data~\cite{sensor}. Data can be encrypted and transferred to our 
-centralized server for permanent data storage. 
-
+centralized server for permanent data storage. \weiss{we should put a diagram of 
+the data collection and storage}
 To depoly such a process on a mobile device, a device owner first installs an
 app~\cite{sensor-app} on their devices\footnote{Currently, Android smartphones 
 and tablets are supported.}. Since we are interested in
@@ -88,8 +88,7 @@ of reckless or illegal driving behaviors, etc.
 \subsection{Data store}
 Given the variety of sensors on a smartphone,
 sensor measurements come in different forms. 
-As shown in Figure~\ref{fig:json}, many types of sensor data are far 
-more complex than are simple primitive data types. 
+As shown in Figure~\ref{fig:json}, many types of sensor data have complex structure.
 As a result, we decided to use a non-relational database, 
 MongoDB~\cite{mongodb}, for storing sensor data. MongoDB has a Binary 
 JSON (BSON) document-style structure identical to that shown previously 
