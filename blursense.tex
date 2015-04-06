@@ -22,7 +22,7 @@ provide in-time disclosures to users of accessing sensitive content on smart
 devices~\cite{ftc}. 
 
 \subsection{Applying Trust Metrics}
-In the context of limiting access to sensor data that can reveal private information,
+In the context of limiting  private information by limiting access to sensor data,
 having a trust metric that can be applied to an app is a big advantage.
 The current access control to the smartphone resources,
 such as sensor data, is static and coarse-grained. 
@@ -35,8 +35,8 @@ applications may ask for more permissions than are actually
 required for operation. Having been granted the requested
 permissions, applications have access to those resources permanently. 
 A trust metric could be used during installation of an app to decide whether or not
-to deny access specified in its manifest file.  This is the first level of defense.
-A second level of defense would be to restrict access to sensor data in a
+to deny access specified in its manifest file.  
+Another approach would be to restrict access to sensor data in a
 dynamic and fine-grained framework.
 Some systems have been proposed to address this
 issue; however, they require modifications to the Android
@@ -44,12 +44,6 @@ platform~\cite{conti2011crepe, hornyack2011these}. This increases the cost of ma
 less flexible and cannot be used in legacy systems. In addition,
 the user would need to trust that the new operating system is
 not malicious and is not more vulnerable than the standard one.
-
-
-The BlurSense project deals with this problem of fine-grained conrol of sensor data
-by requiring that all untrusted apps be installed
-through an app that filters sensor data through a reference monitor~\cite{cappos-SAS14}.  
-(See Fig~\ref{design})
 
 \begin{figure}%[htd]
   \centering
@@ -59,6 +53,10 @@ through an app that filters sensor data through a reference monitor~\cite{cappos
   \label{Fig:design}
 \end{figure}
 
+The BlurSense project deals with this problem of fine-grained conrol of sensor data
+by requiring that all untrusted apps be installed
+through an app that filters sensor data through a reference monitor~\cite{cappos-SAS14}.  
+(See Fig~\ref{design})
 The level of trust is left up to the user.  The reference
 monitor can exercise fine-grained control to degrade the accuracy of the sensor data, render it 
 completely meaningless, or pass it through unchanged.  
@@ -71,7 +69,7 @@ that the app will have the same access to the sensor data that
 is permitted by the manifest file. In the ideal case, Blursense
 would limit the access to sensor data based on a trust metric for the app.
 
-
+\weiss{this is redundant, but maybe we should say something}
 Currently, implemented sensor modules and
 the available contextual information are classified into three
 categories: device specific (percentage of battery power level,
@@ -110,7 +108,21 @@ privacy filters from user space. Multiple security vendors
 can efficiently and effectively collaborate to strengthen user
 privacy.} %end comment
 
-Unlike the existing privacy controls, BlurSense
+BlurSense provides a way to control the precision and accuracy of the GPS
+sensor.  We show how blurring the GPS location affects the difference between
+speed measured by a car speedometer and communicated via the OBD port to
+a smartphone, similar to our experiment in section~\ref{sec:geolocation}.
+
+\begin{figure}
+\centering
+%\includegraphics[width=3.5in]{}
+\caption{Speed difference vs time with blurring of the GPS data.}
+\label{fig:blur-GPS}
+\end{figure}
+
+
+\eat{
+ BlurSense
 provides a programmable privacy protection framework. Users
 not only gain full transparency of what information is captured
 on their devices, but also have full control over how much
@@ -194,3 +206,4 @@ BlurSense can be used with Sensibility Testbed~\cite{cappos-sensibility},
 which provides
 a rich and extensible collection of sensor data from Android
 devices 
+}
