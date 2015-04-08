@@ -48,15 +48,15 @@ not malicious and is not more vulnerable than the standard one.
 \begin{figure}%[htd]
   \centering
   % Requires \usepackage{graphicx}
-  \includegraphics[width=3.7in]{refMonDesign.eps}\\
+  \includegraphics[width=3.7in]{refMonDesign.pdf}\\
   \caption{System architecture.}
   \label{Fig:design}
 \end{figure}
 
 The BlurSense project deals with this problem of fine-grained conrol of sensor data
 by requiring that all untrusted apps be installed
-through an app that filters sensor data through a reference monitor~\cite{cappos-SAS14}.  
-(See Fig~\ref{design})
+through an app that filters sensor data through a reference monitor~\cite{cappos2014blursense}.  
+(See Figure~\ref{Fig:design})
 The level of trust is left up to the user.  The reference
 monitor can exercise fine-grained control to degrade the accuracy of the sensor data, render it 
 completely meaningless, or pass it through unchanged.  
