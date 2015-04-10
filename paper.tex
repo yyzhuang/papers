@@ -45,24 +45,27 @@
 
 \begin{abstract}
 Evaluating trust
- is a challenge for any computer system.  Smartphones and mobile devices install software from a 
-wide range of sources.  As smartphones and other mobile devices become
+ is a challenge for many computer systems.  Smartphones and mobile devices install software from a 
+wide range of sources.  As these devices become
 more popular, the risks of associated malware will become more significant.
 One of the features of these platforms is that they are rich in
-sensors.  This can be a risk to privacy in that they could leak information about the user.  It can also be an
+sensors\footnote{In this work, smartphone sensors are broadly defined as hardware components that can record phenomena about the physical world.}.  These sensors can be a risk to privacy in that they could leak information about the 
+user and user activities.  On the other side, they can also be used as an
 advantage if they can be used to evaluate trust.
 %leak information about any malware that is running on it.  
-This paper builds on  \sysname,  a hierarchical security evaluation framework 
-that has been implemented on Android smartphones.
-This paper examines two cases where this framework can be applied.  
-The first case involves monitoring resource utilization.  A malware parasite, e.g. malicious code 
-that has been injected into a useful App or OS utility,
-could manifest as an increase in CPU or communication processing.
-The battery sensor would detect this.  
-Similarly, malware that could produce an intentional or inadvertant effect on sensors such as accelerometers
-and GPS receivers could be detected
-by measuring anomalies in the GPS values.
-Our approach is two-fold: evaluating trust based on metrics and models; and 
+
+This paper builds  a hierarchical security evaluation 
+\yanyan{eval security or trust?} framework 
+that uses sensors to evaluate trust and detect anomalies. We examine the results 
+of two empirical studies where this framework is applied.  
+The first study involves monitoring resource utilization.  For example, malicious code 
+injected into an app or OS utility could manifest as an increased consumption in 
+system resources, such as CPU or network communication. Sensor values like battery level 
+and CPU utilization can detect this.  The second study involves erroneous sensor values. 
+For example, malwares that could produce an intentional or inadvertant effect on sensors, such 
+as accelerometers and GPS receivers, could be detected by measuring anomalies 
+in these sensor values. Our approach is two-fold: evaluating trust based on metrics 
+and models, \yanyan{more specific what the metrics and models are?} and 
 using this evaluation to detect anomalies as a way to improve security in general.
 
 
