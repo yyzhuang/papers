@@ -16,39 +16,84 @@ Many people use smartphones for financial transactions.
  Attackers could get personal information for systems administrators and CIOs from their phones and 
  use that for spear phishing.  mention security and privacy issues}  % end comment
 With the development of the mobile communication platforms, which share different devices resources, applications and data, 
-this trend will become stronger and stronger. \weiss{should we mention Sensibility?}
+this trend will become stronger and stronger. 
 In order to facilitate an introduction of the common cyberinfrastructure and promote collaboration between various devices 
 and users, we need to develop models and methods that will evaluate trust, which other infrastructure parts may have in a 
 particular device or an application, and present this evaluation to other participants. The trust assessment values could 
 be applied to optimize data collection and communication schemes in order to satisfy multiple criteria such as overall 
-system performance and/or resource consumption. Also, a device user may benefit from the trust evaluation as it might 
-provide useful information about areas in need of improvement. It could applied in novel non-signature based intrusion 
-detection techniques too.
+system performance and/or resource consumption. Also, the user of a device may benefit from the trust evaluation as it might 
+provide useful information about areas in need of improvement, and it could combined with other techniques for
+ non-signature based intrusion detection.
 
 The more sophisticated mobile devices become, the more complex the threat model is, and the more opportunities
 for vulnerabilities.  Finding viruses and other malware using software signatures is less and less likely to
 work.  What is needed is a system-wide  approach that involves assessing trust for the different
 components by detecting anomalies in sensor behavior and history of the component.  
-In recent research done by Hoffman, \weiss{not sure what to say here.} the authors developed a hierarchical 
+\eat{
+In recent research done by Hoffman, the authors developed a hierarchical 
 mechanism that is scalable and expandable for evaluating security of
 Android smartphones by investigating various sources of information regarding 
 the mobile devices. 
-%
 The three sources of information that they integrate are:
 analysis of installed applications using metadata provided by the Google Play store,
 usage information coming from security tools embedded in the OS, and 
 validation of the device by inspection of sensor data.  
 The sensors in this context refer to any function that
 measures the physical state of the smartphone.  This can include geolocation, accelerometers, CPU 
-utilization, and battery charge.
+utilization, and battery charge.} % end comment
 
-\reznik{Here we need to write one-two pars bib review about trust models and evaluation metrics.}
+\weiss{Leon, are the following paragraphs what you had in mind?}
+\eat{
+McKnight and Chervany, What is Trust? A Conceptual Analysis and an Interdisciplinary Model
 
-This paper presents the development of the novel hierarchical framework that allows the trust evaluation of the network of 
-mobile devices. As a complex concept, the trust depends on numerous factors. The hierarchical structure allows for an 
-inclusion of various trust evaluation systems used to assess diverse trust components as well as their integration in 
+Paul England, Butler Lampson, John Manferdelli, Marcus Peinado, Bryan Willman: A
+Trusted Open Platform. IEEE Computer Scciety, p55-62, July 2003.
+
+Adrian Baldwin, Simon Shiu: Hardware Security Appliances for Trust. In Proceedings of
+the First International Conference of Trust Management (iTrust 2003), Crete, Greece, May
+2003.
+
+Daniel W. Manchala: Xerox Research and Technology. E-Commerce Trust Metrics and
+Models. IEEE Internet Computing, vol.4, no.2 p.36-44 (2000).
+
+Mui Lik, Mohtashemi Mojdeh, Halberstadt Ari: A Computational Model of Trust and Repu-
+tation. In Proc. Of the 35th Annual Hawaii International Conference on System sciences, 7-
+10 (Jan. 2002), Big Island, HI, USA.
+
+ Mogens Nielsen,  Karl Krukow A Bayesian Model for Event-based Trust, 2007
+
+Zheng Yan and Piotr Cofta, “A Mechanism for Trust
+Sustainability among Trusted Computing Platforms", In Proceedings of the 1st
+International Conference on Trust and Privacy in Digital Business
+(TrustBus2004), LNCS Vol. 3184/2004, pp. 11-19, Spain, September 2004.
+} % end comment
+
+The concepts of trust, trusted code base and trusted computing platform (TCP) have been discussed by many others~\cite{}.
+however, it seems that the problem  of quantification is largely unsolved, especially with respect to complex systems.
+If one looks at individual platform within a system, one can simplify the problem by establishing a trusted code base (TCB).
+This is an important principle of secure design, in which the size of the TCB should be as small as possible, yet contain
+sufficient functionality that all other software components on the platform can be built on top of it.  Security restrictions on 
+these other higher levels are imposed using reference monitors.  \weiss{How does the Android OS provide security checks?}
+
+There are two problems that must be solved for multi-platform systems: (1) combining trust metrics from the individual 
+TCPs and (2) understanding and measuring trust over time.
+Yan and Cofta~\cite{yan_2004} point out that even if one can establish a level of trust between two platforms, 
+the more complex problem is sustaining trust over time.  This paper focuses primarily on the first problem of combining
+information to produce a trust metric for the whole system.  Yet, the nature of our work points to ways in which 
+this could be used over time.  By comparing sensor data from different systems, one can periodically check for consistency.
+
+This paper presents the development of the novel hierarchical framework that enables the  evaluation of trust for a network of 
+mobile devices. As a complex concept, the trust depends on numerous factors. The hierarchical structure allows for the
+inclusion of various trust evaluation systems used to assess diverse trusted components as well as their integration in 
 order to produce the cumulative trust score. Also, it facilitates the framework extension by inclusion of new trust 
-component evaluation, facilitating evaluation results improvement for a particular device as well as the evaluation adaptation to diverse devices and applications. The paper describes the version developed for using on Android-based devices.
+component evaluation, facilitating evaluation results improvement for a particular device as well as the evaluation 
+adaptation to diverse devices and applications. \weiss{I don't understand the previous sentence}
+The paper describes the version developed for using on Android-based devices.
 
-The contributions of this paper include: \yanyan{complete..}
-the integration of sensor measurments from multiple devices, ...
+The framework design principles and an overall architecture are described in section II. Also, this section 
+ briefly describes a few of the trust evaluation metrics included in the current implementation,
+while more details about a few of them are provided in sections III-V. In particular, section III discusses metrics whose 
+calculation is based on measuring the device utilization such as voltage supply, CPU and network bandwidth usage. 
+Section IV describes metrics based on multiple sensors that impact the level of privacy supported. 
+Section V discusses the possible ways in which trust evaluation can be verified and adjusted, and it 
+describes some practical cases that have been implemented.

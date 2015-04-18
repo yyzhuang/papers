@@ -1,4 +1,4 @@
-\section{Measuring app behavior}
+\section{TRUST EVALUATION METRICS BASED ON TECHNOLOGICAL PARAMETERS}
 
 Anomalous behavior of a smartphone may be due to malicious adulteration of an application,
 the operating system, or the hardware during the manufacturing chain.
@@ -22,7 +22,7 @@ under general, non-lab conditions.
 If the circumstances can be controlled tightly, then approaches like 
 \textit{Eprof} \cite{pathak2012fine} can be used to estimate energy consumption 
 of individual activities and assign credit to likely originators.  In the following experiment,
-the battery voltage was measured both with and without ads.
+the battery voltage was measured both with and without video ads.
 The ​baseline is the battery consumption playing  music.
 This was recorded for 15 seconds, 60 seconds, and 10 min.  Then, the measurement was repeated
 with both video ads and the music app.  The video ads were only running for the first 15 seconds.
@@ -89,7 +89,7 @@ evade or complicate debugging deliberately, the
 \textit{Dalvik Debug Monitoring Service} (DDMS) 
 % https://developer.android.com/tools/debugging/ddms.html
 provides syscall-level insight.  \weiss{Even if an app is trying to evade reverse engineering,
- would it be hard to eliminate the frequency of syscalls?}
+ wouldn't it be hard to eliminate the frequency of syscalls?}
 
 Figure~\ref{fig:cpu-no-ad} shows a typical  
 session in Traceview, the execution log viewer.  The main thread is doing almost all of the work

@@ -1,4 +1,4 @@
-\section{Measuring geolocation behavior}
+\section{TRUST EVALUATION METRICS BASED ON THE SUPPORTED PRIVACY LEVEL}
 \label{sec:geolocation}
 %Description of the OBD system, how data can be retrieved from the car.
 Another form of verification is the use of sensors on multiple devices.  For example,
@@ -136,8 +136,9 @@ of the speed measured by GPS and OBD sensor, over 58 data samples collected.
 The overall statistics do not show any anomaly in speed. However, when plotting 
 individual data samples, we can see a data outlier in Figure~\ref{fig:speed-diff}. 
 Excluding this point, the rest of the data samples roughly follow a Gaussian 
-distribution. This outlier could be due to an error in vehicle 
-OBD sensor, or due to an error injected into the code. \yanyan{please fix this}
+distribution. This outlier seems to be due to the initialization of the
+GPS sensor.  Initially, the GPS measurements are underconstrained leading to a large 
+geolocation error, which is rapidly reduced as more measurements are made.
 
 
 \begin{figure}
@@ -168,4 +169,4 @@ We also investigate the speed differences over time.
 In Figure~\ref{fig:time}, we can conclude that excluding the outlier, 
 the differences between 
 vehicle speed and GPS speed fluctuate around a constant value over 
-time. The result is based on MMSE xxx. \yanyan{please fix this}
+time. 

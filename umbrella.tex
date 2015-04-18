@@ -4,11 +4,11 @@
 A hierarchical trust analysis can look at the entire system and combine measurements from multiple sources, making
 it more powerful than measuring a single component or layer.
 This section discusses a comprehensive mechanism that provides a scalable and extendable methodology of trust
- evaluation and analysis for Android-based mobile devices. 
+ evaluation and analysis which is implemented on Android-based mobile devices. \weiss{why is it limited to Android?}
 Trust evaluation of a mobile smartphone device is a complex subject, which depends on multiple characteristics, 
-e.g. sensor accuracy, the rate of encrypted messages, and/or the probability of a system's breakdown over a given period of time. Its evaluation should integrate various metrics ranging from the accuracy and reliability of the data sources to the security of the procedures and tools used. The major research challenge of the framework design is integrating the numerous metrics needed to characterize a device's trust while working with limited resources and processing power. 
-We address this challenge by hierarchically structuring the composition of trust metrics as well as by designing a specialized calculus to evaluate the overall trust. 
-Therefore, the major innovative emphasis in our framework design is put on the integration of a wide variety of indicators and their evaluation procedures. The framework procedures output the overall trust evaluation indicators and additionally calculate the individual product of metrics characterizing system features which are then used to produce recommendations for improvement. The trust evaluation will facilitate decision making, improve performance and increase accountability through the collection, analysis, and reporting of relevant performance-related data. This design facilitates the framework extension through
+e.g. sensor accuracy, the rate of encrypted messages, and/or the probability of a system's breakdown over a given period of time. Its evaluation should integrate various metrics ranging from the accuracy and reliability of the data sources to the security of the procedures and tools used. The major research challenge of the framework design is integrating the numerous metrics needed to characterize a device's trustworthiness while working with limited resources and processing power. 
+We address this challenge by hierarchically structuring the composition of trust metrics as well as by designing a specialized calculus to evaluate the overall trust metric. 
+Therefore, the major innovative emphasis in our framework design is put on the integration of a wide variety of indicators and their evaluation procedures. The framework procedures output the overall trust evaluation indicators and additionally calculate the individual product of metrics characterizing system features which are then used to produce recommendations for improvement. The trust evaluation will facilitate decision-making, improve performance and increase accountability through the collection, analysis, and reporting of relevant performance-related data. This design facilitates the framework extension through
  the inclusion of other metrics, as well as the ease of modification and improvement (see fig~\ref{})
 Current implementation of this framework provides the following metric functionality: 
 
@@ -31,5 +31,10 @@ Unlike other reported tools available, our framework has an umbrella structure t
 diverse trust evaluation mechanisms and results. This open architecture can also be extended to include 
  self-learning capabilities to allow for its optimization towards a particular device and a criteria set. Each of these procedures given above generates a security risk rating, which is then integrated into the umbrella framework. This framework takes into account the varied landscape of mobile devices and is designed to be flexible and easily adaptable to the changing security environment. Based on this design and contribution of each of the procedures could be adjusted depending on the target.
 \weiss{Leon, you could put your figure here}
-\yanyan{I don't think we do self-learning or risk rating. Delete? Otherwise IMHO would be considered 
-as over claim by reviewers.}
+\begin{figure}
+\centering
+\includegraphics[width=3.5in]{umbrella_framework.pdf}
+\caption{Framework operation and architecture.}
+\label{fig:umbrella}
+\end{figure}
+
