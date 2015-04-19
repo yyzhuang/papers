@@ -37,15 +37,21 @@
 
 \begin{document}
 
-\title{A Trust Evaluation Framework for Mobile Devices and Applications}
+\title{Trust Evaluation in Mobile Devices: An Empirical Study}
 \author{Bart}
 
 \maketitle
 
 
 \begin{abstract}
-Evaluating trust
- is a challenge for many computer systems.  Smartphones and mobile devices install software from a 
+Evaluating trust for complex and diverse systems is a signficant challenge.
+In order to manage the complexity, we use 
+a hierarchical evaluation methodology that combines trust metrics from characteristics of individual components
+with trust metrics that are based on the consistency of sensor data from multiple components.
+  Smartphones  are rich in sensors and network easily with other mobile devices and wearable computers.
+
+\eat{
+  Smartphones and mobile devices install software from a 
 wide range of sources.  As these devices become
 more popular, the risks of associated malware will become more significant.
 One of the features of these platforms is that they are rich in
@@ -53,21 +59,25 @@ sensors\footnote{In this work, smartphone sensors are broadly defined as hardwar
 user and user activities.  On the other side, they can also be used as an
 advantage if they can be used to evaluate trust.
 %leak information about any malware that is running on it.  
+This paper builds  a hierarchical trust evaluation 
+ framework 
+that uses sensors to evaluate trust and detect anomalies.
+} % end comment
 
-This paper builds  a hierarchical security evaluation 
-\yanyan{eval security or trust?} framework 
-that uses sensors to evaluate trust and detect anomalies. We examine the results 
+ We examine the results 
 of two empirical studies where this framework is applied.  
 The first study involves monitoring resource utilization.  For example, malicious code 
 injected into an app or OS utility could manifest as an increased consumption in 
 system resources, such as CPU or network communication. Sensor values like battery level 
-and CPU utilization can detect this.  The second study involves erroneous sensor values. 
-For example, malwares that could produce an intentional or inadvertant effect on sensors, such 
-as accelerometers and GPS receivers, could be detected by measuring anomalies 
-in these sensor values. Our approach is two-fold: evaluating trust based on metrics 
+and CPU utilization can detect this.  The second study uses a comparison of erroneous sensor values
+from the GPS sensor on a smartphone with speed data from the OBD port on an automobile.
+These are examples in which malware could produce an intentional or inadvertant effect on sensors, such 
+ass GPS receivers or a speedometer, and could be detected by measuring anomalies 
+in these sensor values. 
+\eat{
+Our approach is two-fold: evaluating trust based on metrics 
 and models, \yanyan{more specific what the metrics and models are?} and 
-using this evaluation to detect anomalies as a way to improve security in general.
-
+using this evaluation to detect anomalies as a way to improve security in general.} % end comment
 
 \eat{For many people, smartphones and other mobile devices serve as a technical interface to the modern world.
 These smart devices have embedded on-board sensors, such as accelerometers, gyroscopes, GPS sensors, and
@@ -98,7 +108,7 @@ data in a way that safeguards users' privacy.}  %end comment
 % Cappos was supported by the National Science Foundation through grants 
 
 \bibliographystyle{abbrv}
-\bibliography{bibdata}
+\bibliography{bibdata,trust}
 
 \end{document}
 

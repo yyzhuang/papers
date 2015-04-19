@@ -1,12 +1,12 @@
 \section{Introduction}
 
 Android-based mobile devices and smartphones are becoming increasingly popular.  The number of mobile phones
-sold has surpassed the number of laptops, reaching XXXin 2014~\cite{}.  Google is reported\cite{} to have more than
+sold has surpassed the number of laptops, reaching 1.3 billion in 
+2014~\footnote{http://www.idc.com/prodserv/smartphone-os-market-share.jsp}.  Google is reported\cite{} to have more than
 a billion active users of Android-based devices.  As their popularity increases, so does their value as
 a target for malware injection.  
-This is particularly true for low cost end smartphones sold in developing countries. According to \cite{}
+This is particularly true for low cost end smartphones sold in developing countries. According to \cite{zheng2014droidray}
 some vendors there intentionally create conditions facilitating various security violations in these devices.
-\reznik{I believe I know the ref but I need some time to find it out}
  There are many possible risks, associated with using compromised devices.  Nowadays due to universal interconnection and 
 interdependence the 
 possible compromise of a mobile device will affect not only applications executed on it and its users but all other parts 
@@ -18,17 +18,22 @@ Many people use smartphones for financial transactions.
 With the development of the mobile communication platforms, which share different devices resources, applications and data, 
 this trend will become stronger and stronger. 
 In order to facilitate an introduction of the common cyberinfrastructure and promote collaboration between various devices 
-and users, we need to develop models and methods that will evaluate trust, which other infrastructure parts may have in a 
-particular device or an application, and present this evaluation to other participants. The trust assessment values could 
+and users, we need to develop trust models and methods that will evaluate trust, which other infrastructure parts may have in a 
+particular device or an application, and present this evaluation to other participants. Trust can be modeled at 
+multiple levels, e.g. an application, a device (hardware and software), or a network of devices.  Ultimately, we need to 
+integrate these into a single conceptual framework in order to use them.
+The trust assessment  could 
 be applied to optimize data collection and communication schemes in order to satisfy multiple criteria such as overall 
-system performance and/or resource consumption. Also, the user of a device may benefit from the trust evaluation as it might 
-provide useful information about areas in need of improvement, and it could combined with other techniques for
+system performance and/or resource consumption, subject to constraints based on security and privacy requirements.
+. Also, the user of a device may benefit from the trust evaluation as it might 
+provide useful information about areas in need of improvement, and it could be combined with other techniques for
  non-signature based intrusion detection.
 
-The more sophisticated mobile devices become, the more complex the threat model is, and the more opportunities
-for vulnerabilities.  Finding viruses and other malware using software signatures is less and less likely to
-work.  What is needed is a system-wide  approach that involves assessing trust for the different
-components by detecting anomalies in sensor behavior and history of the component.  
+The more sophisticated mobile devices become, the more complex the threat model is, and the more opportunities there are
+for vulnerabilities to appear.  Finding viruses and other malware using software signatures is less and less likely to
+work.  Signature based intrusion detection systems have to be complemented with a system-wide  approach that 
+involves assessing trust for the different
+components by detecting anomalies in sensor-originated data.
 \eat{
 In recent research done by Hoffman, the authors developed a hierarchical 
 mechanism that is scalable and expandable for evaluating security of
@@ -42,7 +47,7 @@ The sensors in this context refer to any function that
 measures the physical state of the smartphone.  This can include geolocation, accelerometers, CPU 
 utilization, and battery charge.} % end comment
 
-\weiss{Leon, are the following paragraphs what you had in mind?}
+
 \eat{
 McKnight and Chervany, What is Trust? A Conceptual Analysis and an Interdisciplinary Model
 
@@ -68,29 +73,23 @@ International Conference on Trust and Privacy in Digital Business
 (TrustBus2004), LNCS Vol. 3184/2004, pp. 11-19, Spain, September 2004.
 } % end comment
 
-The concepts of trust, trusted code base and trusted computing platform (TCP) have been discussed by many others~\cite{}.
+The concepts of trust and trust evaluation have been discussed by many others~\cite{};
 however, it seems that the problem  of quantification is largely unsolved, especially with respect to complex systems.
-If one looks at individual platform within a system, one can simplify the problem by establishing a trusted code base (TCB).
-This is an important principle of secure design, in which the size of the TCB should be as small as possible, yet contain
-sufficient functionality that all other software components on the platform can be built on top of it.  Security restrictions on 
-these other higher levels are imposed using reference monitors.  \weiss{How does the Android OS provide security checks?}
-
-There are two problems that must be solved for multi-platform systems: (1) combining trust metrics from the individual 
-TCPs and (2) understanding and measuring trust over time.
-Yan and Cofta~\cite{yan_2004} point out that even if one can establish a level of trust between two platforms, 
-the more complex problem is sustaining trust over time.  This paper focuses primarily on the first problem of combining
+There are two ways in which trust is used: (1) evaluating trust using metrics and models; (2) finding mechanisms to
+guarantee that a system is secure.
+This paper focuses primarily on the first problem of combining
 information to produce a trust metric for the whole system.  Yet, the nature of our work points to ways in which 
-this could be used over time.  By comparing sensor data from different systems, one can periodically check for consistency.
+this could be used to produce secure or trustworthy systems.  
 
-This paper presents the development of the novel hierarchical framework that enables the  evaluation of trust for a network of 
-mobile devices. As a complex concept, the trust depends on numerous factors. The hierarchical structure allows for the
+This paper presents the development of the novel hierarchical model that enables the  evaluation of trust for a network of 
+mobile devices. Trust evaluation depends on numerous factors. The hierarchical structure allows for the
 inclusion of various trust evaluation systems used to assess diverse trusted components as well as their integration in 
-order to produce the cumulative trust score. Also, it facilitates the framework extension by inclusion of new trust 
-component evaluation, facilitating evaluation results improvement for a particular device as well as the evaluation 
+order to produce the cumulative trust score. Also, it allows for extending the framework by inclusion of new trust metrics, 
+facilitating evaluation results improvement for a particular device as well as the evaluation 
 adaptation to diverse devices and applications. \weiss{I don't understand the previous sentence}
 The paper describes the version developed for using on Android-based devices.
 
-The framework design principles and an overall architecture are described in section II. Also, this section 
+Section II describes the framework design principles and an overall architecture. Also, this section 
  briefly describes a few of the trust evaluation metrics included in the current implementation,
 while more details about a few of them are provided in sections III-V. In particular, section III discusses metrics whose 
 calculation is based on measuring the device utilization such as voltage supply, CPU and network bandwidth usage. 

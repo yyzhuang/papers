@@ -1,7 +1,7 @@
-\section{TRUST EVALUATION METRICS BASED ON TECHNOLOGICAL PARAMETERS}
+\section{TRUST EVALUATION METRICS BASED ON TECHNOLOGICAL (internal sensors) PARAMETERS}
 
-Anomalous behavior of a smartphone may be due to malicious adulteration of an application,
-the operating system, or the hardware during the manufacturing chain.
+Anomalous behavior of a smartphone may be due to malicious exploit of an application,
+the operating system, or the hardware.
 In order to be able to detect this
 behavior, we first need to establish baseline measurements for 
 normal behavior. We focus on metrics that are observable 
@@ -11,7 +11,7 @@ We have enhanced existing debugging techniques with additional internal sensor m
 Aggregate metrics, such as battery voltage, CPU usage, and network usage are easy to collect.  
 Because they measure different components of the system, they can be considered as independent with
 respect to trust metrics.  On the other hand,
-they can also be influenced by random and extraneous factors unrelated to trust.
+they can also be influenced by extraneous factors unrelated to security and trustworthiness.
 
 \subsection{Battery voltage}
 The battery voltage is a proxy metric for the amount of remaining 
@@ -39,23 +39,24 @@ The data are shown in table~\ref{table:battery}
 \begin{table}[ht]
 \centering 
 \scriptsize
+\eat{
 \begin{tabular}{|l|l|}
   \hline
   {} & {Rate of consumption(mA)} \\
   \hline
   {} & {31.5}\\
+\end{tabular} } % end comment
+
+\begin{tabular}{|l||l|l|}
+    \hline
+    {\bf Time} & {\bf 15s} & {\bf 60s}  \\
+    \hline
+    \% of total battery use with ads (avg)  & 81.4\%   & 53.0\%    \\
+    \hline
+    \% of total battery use with ads (max) & 86.0\%  & 61.5\%   \\
+    \hline 
 \end{tabular}
 
-\begin{tabular}{|l||l|l|l|}
-    \hline
-    {\bf Time} & {\bf 15s} & {\bf 60s} & {\bf 10min} \\
-    \hline
-    \% of total battery use with ads (avg)  & 81.4\%   & 53.0\%   & \\
-    \hline
-    \% of total battery use with ads (max) & 86.0\%  & 61.5\%  & 11.9\%  \\
-    \hline
-
-\end{tabular}
 \caption{A comparison of battery use with anomalous adware compared with normal.
 The ad was 15 seconds.}
 \label{table:battery}
@@ -88,8 +89,9 @@ finer-grained views as well. Assuming an app is not designed to
 evade or complicate debugging deliberately, the 
 \textit{Dalvik Debug Monitoring Service} (DDMS) 
 % https://developer.android.com/tools/debugging/ddms.html
-provides syscall-level insight.  \weiss{Even if an app is trying to evade reverse engineering,
- wouldn't it be hard to eliminate the frequency of syscalls?}
+provides syscall-level insight.  
+\eat{Even if an app is trying to evade reverse engineering,
+ wouldn't it be hard to eliminate the frequency of syscalls?} % end commment
 
 Figure~\ref{fig:cpu-no-ad} shows a typical  
 session in Traceview, the execution log viewer.  The main thread is doing almost all of the work

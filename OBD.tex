@@ -1,4 +1,4 @@
-\section{TRUST EVALUATION METRICS BASED ON THE SUPPORTED PRIVACY LEVEL}
+\section{TRUST EVALUATION TESTING AND VERIFICATION}
 \label{sec:geolocation}
 %Description of the OBD system, how data can be retrieved from the car.
 Another form of verification is the use of sensors on multiple devices~\cite{ju2012neteye}.  For example,
@@ -13,11 +13,10 @@ etc.
 
 \subsection{Vehicle data collection}
 
-Our vehicular data collection consists of a process on a mobile 
+Vehicular data collection consists of a process on a mobile 
 device that directly communicates with in-vehicle sensors and collects sensor 
-data~\cite{sensor}. Data can be encrypted and transferred to our 
-centralized server for permanent data storage. \weiss{we should put a diagram of 
-the data collection and storage}
+data~\cite{sensor}. Data can be encrypted and transferred to a
+centralized server for permanent data storage. 
 To deploy such a process on a mobile device, a device owner first installs an
 app~\cite{sensor-app} on their devices\footnote{Currently, Android smartphones 
 and tablets are supported.}. Since we are interested in
@@ -28,13 +27,16 @@ owners. These owners simply insert their WiFi On-Board Diagnostics
 and connect their 
 smartphone or tablet to the sensor, which also runs as a WiFi access 
 point. Note that OBD systems are in most cars and light trucks 
-on the road today~\cite{obdconnector}. Therefore, our 
+on the road today~\cite{obdconnector}. 
+\eat{Therefore, our 
 infrastructure does not require extra installation of specialized  
-hardware or equipment~\cite{reininger2015first}. 
+hardware or equipment~\cite{reininger2015first}. } % end comment
+Trust evaluation could be used to determine if the phone should trust the car,
+vice versa, as well as whether the user should trust the combined system.
 
-A person interested in getting vehicular data uploads his  
-code to run in the background of the mobile device, and to communicate 
-with an in-vehicle OBD sensor to get vehicle data. Device owners need not worry about having to
+The vehicular data is uploaded by the app
+which runs in the background of the mobile device and communicates
+with an in-vehicle OBD sensor. Device owners need not worry about having to
 interact with the app or about being interrupted as they use their smartphones. 
 Note that all code runs in a secure sandbox in our 
 app~\cite{sensor-app}, which limits the amount of storage, network, 
@@ -51,10 +53,11 @@ multiple end user devices is stored in a non-relational database.
 An example of 
 collected data is shown in Figure~\ref{fig:json}, in JSON format.
 The collected data set can be visualized on Google Maps to 
-identify fuel efficient routes, routes with higher traffic activity, and routes 
-(and drivers) that exhibit a high frequency 
-of reckless or illegal driving behaviors, etc. 
+identify fuel efficient routes, routes with higher traffic activity, 
+but it could also be used to detect reckless or illegal driving behaviors,
+in which case trust metrics would be significant.
 
+\eat{
 \begin{figure}
 \scriptsize 
 \begin{Verbatim}
@@ -85,7 +88,10 @@ of reckless or illegal driving behaviors, etc.
 \end{Verbatim}
 \caption{JSON document of vehicular data.\label{fig:json}}
 \end{figure}
+}  % end comment
 
+
+\eat{
 \subsection{Data store}
 Given the variety of sensors on a smartphone,
 sensor measurements come in different forms. 
@@ -95,7 +101,7 @@ MongoDB~\cite{mongodb}, for storing sensor data. MongoDB has a Binary
 JSON (BSON) document-style structure identical to that shown previously 
 in Figure~\ref{fig:json}, albeit converted into binary as its name suggests. 
 This provides the scalability that is crucial to our system and that allows dynamic storage of 
-new sensors, as needed. 
+new sensors, as needed. } % end comment
 
 \subsection{Geolocation data analysis}
 
@@ -137,7 +143,7 @@ The overall statistics do not show any anomaly in speed. However, when plotting
 individual data samples, we can see a data outlier in Figure~\ref{fig:speed-diff}. 
 Excluding this point, the rest of the data samples roughly follow a Gaussian 
 distribution. This outlier seems to be due to the initialization of the
-GPS sensor.  Initially, the GPS measurements are underconstrained leading to a large 
+GPS sensor.  Initially, the GPS parameters are underconstrained leading to a large 
 geolocation error, which is rapidly reduced as more measurements are made.
 
 
@@ -154,9 +160,9 @@ the varying vehicle speed. As shown in Figure~\ref{fig:car}, the speed
 differences are in a linear relation with the vehicle speed 
 (other than the outlier), i.e., the 
 higher the vehicle speed, the smaller difference between vehicle 
-speed and GPS speed. \yanyan{any other observations?} 
+speed and GPS speed. 
 The linear relationship in the figure is based on minimum mean 
-square error (MMSE) xxx. \yanyan{please fix this}
+square error (MMSE).
 
 \begin{figure}
 \centering
@@ -170,3 +176,115 @@ In Figure~\ref{fig:time}, we can conclude that excluding the outlier,
 the differences between 
 vehicle speed and GPS speed fluctuate around a constant value over 
 time. 
+
+\subsection{GPS Data}
+\eat{
+1) Overview of the Solution: Today's smartphone OS typ-
+ically exposes resources based on a static policy. Such per-
+missions are often much more than necessary. Several related
+work has been proposed to refine or reduce permissions on
+mobile platforms [18], [29], [17], [30] via modifying the
+device platform. BlurSense allows untrusted parties to add
+privacy filters from user space. Multiple security vendors
+can efficiently and effectively collaborate to strengthen user
+privacy.} %end comment
+
+BlurSense provides a way to control the precision and accuracy of the GPS
+sensor.  We show how blurring the GPS location affects the difference between
+speed measured by a car speedometer and communicated via the OBD port to
+a smartphone, similar to our experiment in section~\ref{sec:geolocation}.
+
+\begin{figure}
+\centering
+%\includegraphics[width=3.5in]{}
+\caption{Speed difference vs time with blurring of the GPS data.}
+\label{fig:blur-GPS}
+\end{figure}
+
+
+\eat{
+ BlurSense
+provides a programmable privacy protection framework. Users
+not only gain full transparency of what information is captured
+on their devices, but also have full control over how much
+information they would share with the rest of the world -
+a secure personal data ecosystem. After installing BlurSense,
+a user can install software from a third party (like a security vendor) that performs custom sensor filtering actions in
+response to application requests. For example, an application
+could be prevented from using motion sensors when running
+in the background, or precise GPS data could be abstracted
+to a neighborhood or zip code. 
+BlurSense
+provides effective controls for smartphones, much like Flash and JavaScript
+filtering tools protect laptops and desktops (e.g., NoScript~\cite{noscript},
+AdBlock~\cite{adblock}, FlashBlock~\cite{Flashblock}). 
+
+2) What BlurSense Provides: Seattle provides a sensor
+interposition mechanism and a sandboxing mechanism that
+make it easy to implement privacy filters. A user can let a third
+party have access to their sensor data from within a security
+and performance isolated container [20]. By leveraging this
+security, the user provides minimal trust in the third party,
+but allows them an easy way to code their filters. This
+functionality also automatically handles multiple privacy filters
+from different parties through the sandbox policy composition
+functionality~\cite{Cappos_CCS_10}.
+Researchers who use BlurSense will build a mechanism
+to trap the requests from generic  applications and pass them
+into BlurSense (a proof-of-concept for Android has already
+been built). They will build and manage an ``App Store'' for
+BlurSense to allow users to locate privacy filters they wish
+to apply. These may range from sharing sensor data with
+researchers by reducing the precision of sensor values, salting
+and hashing sensor values for anonymizing collected data,
+or completely denying access to individual (or all) sensors.
+For a particular sensor, a filter might perform an action such
+as blurring the resolution of photos and video taken by the
+camera, removing access point information from WiFi scans,
+or omitting the motion sensor data completely. Security and
+privacy groups can easily build and disseminate their own
+privacy filters they recommend to users by adding them to
+BlurSense app store. Therefore, BlurSense is able to handle
+the three categories of threats in Section
+
+
+\eat{To protect smartphone users'
+privacy, Blursense provides a dynamic, fine-
+grained, flexible access control mechanism, which incorporates
+privacy filters in user space [19], [20]. } % end comment
+
+We want to let users
+choose defenses freely in a marketplace so that different
+vendors can build them.
+Specifically, it implements a framework of reference
+monitors, to enforce mandatory access control to sensor data
+in real time. A reference monitor is a method or function that
+implements an access control policy for a set of resources and
+is usually specified in terms of what capabilities are allowed.
+The access control that we are concerned with in this paper is
+for sensor data with respect to applications in user space. If
+such an application needs to access any of the sensor data, the
+second line of defensive (reference monitors) will come into
+play, mediating every access to sensor data. 
+%As a result, a user should be able to combine solutions from different vendors.
+If a vendor's product is vulnerable to attack or the vendor is malicious,
+the user can still be protected.
+According to the semantics of the access requests and the
+current context, when a remote procedure call is made to the
+Android OS to request sensor data, it will be handled by a
+reference monitor. Based on a sensitivity of the application,
+the data returned may be filtered, dropped or passed through.
+Note that the reference monitor cannot pass on data that is
+blocked by the manifest file because it is layered on top of
+whatever privacy and security mechanisms that are in place at
+the OS level. If the request is for highly sensitive sensor data,
+then the request might be simply rejected. Otherwise, if the
+request is for medium-level sensitive sensor data, the request
+might get through, but the returned data has reduced resolution.
+If the request is for low-sensitive sensor data, then the return
+results need to be processed, e.g., by filtering or obfuscation.
+BlurSense can be used with Sensibility Testbed~\cite{cappos-sensibility}, 
+which provides
+a rich and extensible collection of sensor data from Android
+devices 
+}
