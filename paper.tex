@@ -38,8 +38,8 @@
 \begin{document}
 
 \title{Trust Evaluation in Mobile Devices: \\An Empirical Study}
-\author{Leon Reznik$^*$, Richard Weiss$^{\star}$, Albert Rafetseder$^{\dag}$, 
-Yanyan Zhuang$^{\dag, \ddag}$, Justin Cappos$^{\dag}$, ??\\
+\author{Richard Weiss$^{\star}$, Leon Reznik$^*$, Andrew Hoffman$^*$, Yanyan Zhuang$^{\dag, \ddag}$,
+Albert Rafetseder$^{\dag}$, Justin Cappos$^{\dag}$, \\
 $^*$Rochester Institute of Technology, $^{\dag}$Evergreen College\\
 $^{\dag}$New York University, $^{\ddag}$University of British Columbia}
 
@@ -47,13 +47,30 @@ $^{\dag}$New York University, $^{\ddag}$University of British Columbia}
 
 
 \begin{abstract}
-Trust evaluation of complex and diverse systems, such as an ad-hoc network 
-of mobile devices, is a significant challenge in both theory and practice. 
-In order to manage the complexity, we develop a hierarchical trust 
-evaluation methodology that fuses trust evaluation metrics of individual devices 
-and their components, and verifies and adjusts the overall trust evaluation 
-based on the consistency of data from multiple devices.
-  
+A network of mobile systems is both complex and diverse.  This paper presents 
+system to evaluate the trustworthiness of the individual components as well as the entire system. 
+The major components are applications, devices and networks of devices.  
+Given this diversity and multiple levels, we develop
+a hierarchical trust evaluation methodology, which enables the combination of trust metrics 
+and allows us to verify the trust metric for each component
+based on the trust metrics for others.
+
+The paper first demonstrates this idea is for individual applications and Andriod-based smartphones.
+The methodology involves two stages: initial trust evaluation and trust verification.
+In the first stage, an expert rule system is used to produce trust metrics at the lowest level of
+the hierarchy.  In the second stage, the trust metrics are verified
+by comparing data from components and a trust evaluation is produced for the 
+combined system.  The paper presents the results of two empirical studies, in which 
+this methodology is applied and tested. The first study involves 
+monitoring resource utilization and evaluating trust based on 
+resource consumption patterns. We measured battery voltage, CPU utilization and network communication
+for individual apps and detected anomalous behavior that could be indicative of malicious code.
+The second study involves verification of the trust evaluation by 
+comparing the data coming from two different devices: the 
+GPS location coming from an Android smartphone traveling in an automobile and the data from the speedometer
+sensor.  We compare the data from these two sources.
+% which can be used to decrease the trust evaluation of the smartphone if they are inconsistent.
+
 %Smartphones  are rich in sensors and network easily with other mobile devices and wearable computers.
 
 \eat{
@@ -68,29 +85,19 @@ advantage if they can be used to evaluate trust.
 This paper builds  a hierarchical trust evaluation 
  framework 
 that uses sensors to evaluate trust and detect anomalies.
-} % end comment
 
 The paper describes the hierarchical trust evaluation framework 
-developed and tested for Android based smartphones. The 
-framework operation involves two stages: initial trust evaluation 
-based on the expert rules application, and the 
-evaluation scheme verification and adjustment based on the analysis 
-and comparison of data, which might be extracted from various mobile 
-devices. We examine the results of two empirical studies, in which 
-this framework is applied and tested. The first study involves 
-monitoring resource utilization and evaluating trust based on 
-resource consumption patterns. For example, malicious code injected 
-into an app or OS utility typically results in an increased consumption of 
-system resources, such as CPU or network communication. 
+developed and tested for Android based smartphones.  
+} % end comment
+
+
 %Sensor values like battery level 
 %and CPU utilization can detect this.  The second study uses a comparison of erroneous sensor values
 %from the GPS sensor on a smartphone with speed data from the OBD port on an automobile.
 %These are examples in which malware could produce an intentional or inadvertant effect on sensors, such 
 %ass GPS receivers or a speedometer, and could be detected by measuring anomalies 
 %in these sensor values. 
-The second study involves verification of the trust evaluation by 
-comparing the measurement results coming from the smartphone 
-GPS location sensors against an external speedometer sensor in a car.
+
 \eat{
 Our approach is two-fold: evaluating trust based on metrics 
 and models, \yanyan{more specific what the metrics and models are?} and 
