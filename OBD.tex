@@ -1,10 +1,12 @@
 \section{TRUST EVALUATION TESTING AND VERIFICATION}
 \label{sec:geolocation}
 %Description of the OBD system, how data can be retrieved from the car.
-Another form of verification is the use of sensors on multiple devices~\cite{ju2012neteye}.  For example,
+Another form of trust evaluation is verification based on the use of sensors on multiple devices~\cite{ju2012neteye}.  For example,
 a smartphone may communicate directly with a smartwatch or on-board diagnostics (OBD)
 sensor on an automobile.  These other devices have sensor with the same
-functionality as some of the sensors on the smartphone.
+functionality as some of the sensors on the smartphone.  If there is a discrepancy in the sensor measurements, 
+the trust evaluation of the device can be reduced unless it can be determined that the trust metric for the 
+external sensor data is low.
 % describe what data is collected, how it is stored, and how it might be used.
 % we can include a graph of spped error vs time and the picture of the car route
 We introduce a case where smartphones communicate with an in-vehicle OBD sensor
@@ -161,8 +163,7 @@ differences are in a linear relation with the vehicle speed
 (other than the outlier), i.e., the 
 higher the vehicle speed, the smaller difference between vehicle 
 speed and GPS speed. 
-The linear relationship in the figure is based on minimum mean 
-square error (MMSE).
+A minimum mean square error (MMSE) linear fit is shown in the figure.
 
 \begin{figure}
 \centering
@@ -177,7 +178,7 @@ the differences between
 vehicle speed and GPS speed fluctuate around a constant value over 
 time. 
 
-\subsection{GPS Data}
+\eat{
 \eat{
 1) Overview of the Solution: Today's smartphone OS typ-
 ically exposes resources based on a static policy. Such per-
@@ -288,3 +289,4 @@ which provides
 a rich and extensible collection of sensor data from Android
 devices 
 }
+} % end comment
