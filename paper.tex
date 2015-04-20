@@ -38,17 +38,20 @@
 \begin{document}
 
 \title{Trust Evaluation in Mobile Devices: An Empirical Study}
-\author{Bart}
+\author{Leon Reznik, Richard Weiss, Albert Rafetseder, Yanyan Zhuang, Justin Cappos, ??}
 
 \maketitle
 
 
 \begin{abstract}
-Evaluating trust for complex and diverse systems is a signficant challenge.
-In order to manage the complexity, we use 
-a hierarchical evaluation methodology that combines trust metrics from characteristics of individual components
-with trust metrics that are based on the consistency of sensor data from multiple components.
-  Smartphones  are rich in sensors and network easily with other mobile devices and wearable computers.
+Trust evaluation of complex and diverse systems, such as an ad-hoc network 
+of mobile devices, is a significant challenge in both theory and practice. 
+In order to manage the complexity, we develop a hierarchical trust 
+evaluation methodology that fuses trust evaluation metrics of individual devices 
+and their components, and verifies and adjusts the overall trust evaluation 
+based on the consistency of data from multiple devices.
+  
+%Smartphones  are rich in sensors and network easily with other mobile devices and wearable computers.
 
 \eat{
   Smartphones and mobile devices install software from a 
@@ -64,16 +67,27 @@ This paper builds  a hierarchical trust evaluation
 that uses sensors to evaluate trust and detect anomalies.
 } % end comment
 
- We examine the results 
-of two empirical studies where this framework is applied.  
-The first study involves monitoring resource utilization.  For example, malicious code 
-injected into an app or OS utility could manifest as an increased consumption in 
-system resources, such as CPU or network communication. Sensor values like battery level 
-and CPU utilization can detect this.  The second study uses a comparison of erroneous sensor values
-from the GPS sensor on a smartphone with speed data from the OBD port on an automobile.
-These are examples in which malware could produce an intentional or inadvertant effect on sensors, such 
-ass GPS receivers or a speedometer, and could be detected by measuring anomalies 
-in these sensor values. 
+The paper describes the hierarchical trust evaluation framework 
+developed and tested for Android based smartphones. The 
+framework operation involves two stages: initial trust evaluation 
+based on the expert rules application, and the 
+evaluation scheme verification and adjustment based on the analysis 
+and comparison of data, which might be extracted from various mobile 
+devices. We examine the results of two empirical studies, in which 
+this framework is applied and tested. The first study involves 
+monitoring resource utilization and evaluating trust based on 
+resource consumption patterns. For example, malicious code injected 
+into an app or OS utility typically results in an increased consumption of 
+system resources, such as CPU or network communication. 
+%Sensor values like battery level 
+%and CPU utilization can detect this.  The second study uses a comparison of erroneous sensor values
+%from the GPS sensor on a smartphone with speed data from the OBD port on an automobile.
+%These are examples in which malware could produce an intentional or inadvertant effect on sensors, such 
+%ass GPS receivers or a speedometer, and could be detected by measuring anomalies 
+%in these sensor values. 
+The second study involves verification of the trust evaluation by 
+comparing the measurement results coming from the smartphone 
+GPS location sensors against the external speedometer sensor.
 \eat{
 Our approach is two-fold: evaluating trust based on metrics 
 and models, \yanyan{more specific what the metrics and models are?} and 
