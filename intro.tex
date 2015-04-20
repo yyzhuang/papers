@@ -19,12 +19,13 @@ Many people use smartphones for financial transactions.
  use that for spear phishing.  mention security and privacy issues}  % end comment
 With the development of the mobile communication platforms, which share different devices resources, applications and data, 
 this trend will become stronger and stronger. 
-In order to facilitate an introduction of the common cyberinfrastructure and promote collaboration between various devices 
-and users, we need to develop trust models and methods that will evaluate trust, which other infrastructure parts may have in a 
-particular device or an application, and present this evaluation to other participants. Trust can be modeled at 
+
+In order for mobile devices such as smartphones to communicate with each other, download apps and preserve security, they need to
+be able to compute trust metrics.   Trust can be modeled at 
 multiple levels, e.g. an application, a device (hardware and software), or a network of devices.  Ultimately, we need to 
-integrate these into a single conceptual framework in order to use them.
-The trust assessment  could 
+integrate these into a single conceptual framework in order to use them, but we can also use them to verify trust metrics
+for individual components.
+The trust evaluation  could 
 be applied to optimize data collection and communication schemes in order to satisfy multiple criteria such as overall 
 system performance and/or resource consumption, subject to constraints based on security and privacy requirements.
 . Also, the user of a device may benefit from the trust evaluation as it might 
@@ -32,7 +33,9 @@ provide useful information about areas in need of improvement, and it could be c
  non-signature based intrusion detection.
 
 The more sophisticated mobile devices become, the more complex the threat model is, and the more opportunities there are
-for vulnerabilities to appear.  Finding viruses and other malware using software signatures is less and less likely to
+for vulnerabilities to appear.  Trust evaluation should be sensitive to the detection of viruses and other malicious
+agents in a system.
+However, finding viruses and other malware using software signatures is less and less likely to
 work.  Signature based intrusion detection systems have to be complemented with a system-wide  approach that 
 involves assessing trust for the different
 components by detecting anomalies in sensor-originated data.
@@ -82,9 +85,13 @@ and applications.
 The paper describes the version developed for using on Android-based devices.
 
 Section II describes the framework design principles and an overall architecture. Also, this section 
- briefly describes a few of the trust evaluation metrics included in the current implementation,
-while more details about a few of them are provided in sections III-V. In particular, section III discusses metrics whose 
-calculation is based on measuring the device utilization such as voltage supply, CPU and network bandwidth usage. 
-Section IV describes metrics based on multiple sensors that impact the level of privacy supported. 
-Section V discusses the possible ways in which trust evaluation can be verified and adjusted, and it 
-describes some practical cases that have been implemented.
+ briefly describes a few of the trust evaluation metrics developed for individual apps and
+smartphones that are included in the current implementation,
+while more details about a few of them are provided in sections III-V. In particular, section III discusses metrics 
+for individual apps based on measuring resource utilization such as voltage supply, CPU and network bandwidth usage,
+which can be done on the smartphone.
+Section IV describes metrics based on multiple sensors that impact the level of privacy supported, and how 
+privacy-enhancing tools can interact with trust evaluation.
+Section V discusses the possible ways in which trust evaluation can be verified and adjusted, based on multiple sources
+of data.  In particular, we show data collected simultaneously from a smartphone and the speedometer of an 
+automobile.
