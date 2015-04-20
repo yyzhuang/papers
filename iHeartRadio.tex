@@ -1,4 +1,4 @@
-\section{TRUST EVALUATION METRICS BASED ON TECHNOLOGICAL (internal sensors) PARAMETERS}
+\section{TRUST EVALUATION METRICS BASED ON TECHNOLOGICAL PARAMETERS}
 
 Anomalous behavior of a smartphone may be due to malicious exploit of an application,
 the operating system, or the hardware.
@@ -7,11 +7,11 @@ behavior, we first need to establish baseline measurements for
 normal behavior. We focus on metrics that are observable 
 without requiring inspection of the app's source or binary code
 because obfuscation techniques are very sophisticated and will continue to be developed.
-We have enhanced existing debugging techniques with additional internal sensor measurements to inspect app behavior.
-Aggregate metrics, such as battery voltage, CPU usage, and network usage are easy to collect.  
-Because they measure different components of the system, they can be considered as independent with
-respect to trust metrics.  On the other hand,
-they can also be influenced by extraneous factors unrelated to security and trustworthiness.
+We have enhanced existing debugging techniques with additional parameter measurements to inspect app behavior.
+The three that we chose are battery voltage, CPU usage, and network usage, which are easy to collect.
+The following subsections describe how these three measurements can be linked to specific applications
+and can be used to monitor their behavior and, therefore, adjust their trust evaluations.
+
 
 \subsection{Battery voltage}
 The battery voltage is a proxy metric for the amount of remaining 
@@ -23,12 +23,12 @@ If the circumstances can be controlled tightly, then approaches like
 \textit{Eprof} \cite{pathak2012fine} can be used to estimate energy consumption 
 of individual activities and assign credit to likely originators.  In the following experiment,
 the battery voltage was measured both with and without video ads.
-The ​baseline is the battery consumption playing  music.
-This was recorded for 15 seconds, 60 seconds, and 10 min.  Then, the measurement was repeated
+The ​baseline is the battery consumption for a music app.
+This was recorded for 15 seconds and 60 seconds.  Then, the measurement was repeated
 with both video ads and the music app.  The video ads were only running for the first 15 seconds.
-The smartphone consumes only 31.5mA with no apps running, and 56.5 mA with the radio app
+The smartphone consumes only 31.5mA with no apps running, and 56.5 mA with the music app
 running.
-But when playing a video ad, the consumption is 169.5mA. 
+However, when playing a video ad, the consumption is 169.5mA. 
 In the experiment, the video ad lasted 15 seconds.
 Over the first 15 seconds, the average battery use attributed to the video ads was 81\% of the total
 battery use.  This is very significant and would be difficult to disguise.
