@@ -20,21 +20,22 @@ Many people use smartphones for financial transactions.
 With the development of the mobile communication platforms, which share different devices resources, applications and data, 
 this trend will become stronger and stronger. 
 
-In order for mobile devices such as smartphones to communicate with each other, download apps and preserve security, they need to
-be able to compute trust metrics.   Trust can be modeled at 
-multiple levels, e.g. an application, a device (hardware and software), or a network of devices.  Ultimately, we need to 
-integrate these into a single conceptual framework in order to use them, but we can also use them to verify trust metrics
-for individual components.
+In order for mobile devices such as smartphones to communicate with each other, download apps and preserve security,
+they need to be able to compute trust metrics.   Trust can be modeled at 
+multiple levels, e.g. an application, a device (hardware and software), or a network of devices.  Ultimately, our goal
+is to integrate these metrics into a single conceptual framework so that we can reason about complex systems at a  
+higher level, and we can also use them to verify trust metrics for individual components.
 The trust evaluation  could 
-be applied to optimize data collection and communication schemes in order to satisfy multiple criteria such as overall 
+be applied to optimize data collection and communication schemes in order to satisfy multiple criteria such as 
+data quality, overall
 system performance and/or resource consumption, subject to constraints based on security and privacy requirements.
 Also, the user of a device may benefit from the trust evaluation as it might 
 provide useful information about areas in need of improvement, and it could be combined with other techniques for
  non-signature based intrusion detection.
 
-The more sophisticated mobile devices become, the more complex the threat model is, and the more opportunities there are
-for vulnerabilities to appear.  Trust evaluation should be sensitive to the detection of viruses and other malicious
-agents in a system.
+The more sophisticated mobile devices become, the more complex the threat model is, and the more opportunities there 
+are for vulnerabilities to appear.  Trust evaluation should be sensitive to the detection of viruses and other 
+malicious agents in a system.
 However, finding viruses and other malware using software signatures is less and less likely to
 work.  Signature based intrusion detection systems have to be complemented with a system-wide  approach that 
 involves assessing trust for the different
@@ -76,13 +77,13 @@ The concepts of trust and trust evaluation have been discussed by many others~\c
 however, it seems that the problem  of quantification is largely unsolved, especially with respect to complex systems.
  Yet, the nature of our work points to ways in which 
 this could be used to produce secure or trustworthy systems.  
-This paper presents the development of the novel hierarchical model that enables the  evaluation of trust for a network of 
-mobile devices. Trust evaluation depends on numerous factors. The hierarchical structure allows for the
-inclusion of various trust evaluation systems used to assess diverse trusted components as well as their integration in 
-order to produce a cumulative trust score. Also, it allows for extending the framework by inclusion of new trust metrics
-and facilitates both self-evaluation for a particular device as well as the collaborative evaluation of diverse devices 
-and applications. 
-The paper describes the version developed for using on Android-based devices.
+This paper presents the development of the novel hierarchical model that enables the  evaluation of trust for a 
+network of mobile devices. Trust evaluation depends on numerous factors. The hierarchical or umbrella structure allows for the
+inclusion of various trust evaluation systems used to assess diverse trusted components as well as their integration 
+in order to produce a cumulative trust score. Also, it allows for extending the framework by inclusion of new trust 
+metrics and facilitates both self-evaluation for a particular device as well as the collaborative evaluation of 
+diverse devices and applications. 
+The paper describes the version developed for Android-based devices.
 
 Section II describes the framework design principles and an overall architecture. Also, this section 
  briefly describes a few of the trust evaluation metrics developed for individual apps and
