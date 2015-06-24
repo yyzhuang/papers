@@ -10,19 +10,25 @@
 
 A hierarchical trust analysis can look at the entire system and combine measurements from multiple sources, making
 it more powerful than measuring a single component or layer.  The components include smartphone and other mobile
-devices, which themselves are composed of applications, OS, and hardware. The networks of mobile devices form another layer
-in the hierarchy.  The hierachical trust analysis includes both interactions among components at the same level, as well
-as interactions across adjacent levels.
+devices, which themselves are composed of applications, OS, and hardware. The networks of mobile devices form another 
+layer in the hierarchy.  The hierachical trust analysis includes both interactions among components at the same level,
+as well as interactions across adjacent levels.  We could use the term {\it umbrella} because the structure is not
+a strict containment hierarchy.  For example, an application could be installed on multiple devices and thus not
+contained by only one.
 This section discusses a comprehensive mechanism that provides a scalable and extendable methodology of trust
  evaluation and analysis which has been implemented on Android-based mobile devices.
 Trust evaluation of a mobile smartphone device is a complex subject, which depends on multiple characteristics, 
-e.g. sensor accuracy, the rate at which messages can be encrypted,
- and/or the probability of a system's breakdown over a given period of time. Its evaluation should integrate various metrics ranging from the accuracy and reliability of the data sources to the security of the procedures and tools used. The major research challenge of the framework design is integrating the numerous metrics needed to characterize a device's trustworthiness while working with limited resources and processing power. 
+e.g. sensor accuracy, the rate at which messages can be encrypted,  % how does this affect trust?
+ and/or the probability of a system's breakdown over a given period of time. Its evaluation should integrate various 
+ metrics ranging from the accuracy and reliability of the data sources to the security of the procedures and tools 
+ used. The major research challenge of the framework design is integrating the numerous metrics needed to characterize
+ a device's trustworthiness while working with limited resources and processing power. 
 We address this challenge by hierarchically structuring the composition of trust metrics as well as by designing a specialized calculus to evaluate the overall trust metric. 
 Therefore, the major innovative emphasis in our framework design is put on the integration of a wide variety of indicators and their evaluation procedures. The framework procedures output the overall trust evaluation indicators and additionally 
 calculate the individual metrics characterizing system features which could then be used to produce recommendations for improvement. 
-The trust evaluation will facilitate decision-making, improve performance and increase accountability through the collection, analysis, and reporting of relevant performance-related data. This design facilitates the framework extension through
- the inclusion of other metrics, as well as the ease of modification and improvement (see fig~\ref{fig:umbrella})
+The trust evaluation will facilitate decision-making, improve performance and increase accountability through the collection, 
+analysis, and reporting of relevant performance-related data. This design facilitates the framework extension through the 
+inclusion of other metrics, as well as the ease of modification and improvement (see fig~\ref{fig:umbrella})
 Current implementation of this framework includes the following measures and functionality: 
 
 \begin{enumerate}
