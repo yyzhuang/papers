@@ -24,7 +24,7 @@ e.g. sensor accuracy, the rate at which messages can be encrypted,  % how does t
  used. The major research challenge of the framework design is integrating the numerous metrics needed to characterize
  a device's trustworthiness while working with limited resources and processing power. 
 We address this challenge by hierarchically structuring the composition of trust metrics as well as by designing a specialized calculus to evaluate the overall trust metric. 
-Therefore, the major innovative emphasis in our framework design is put on the integration of a wide variety of indicators and their evaluation procedures. The framework procedures output the overall trust evaluation indicators and additionally 
+Therefore, the major innovative aspect of our framework design is the integration of a wide variety of indicators and their evaluation procedures. The framework procedures output the overall trust evaluation indicators and additionally 
 calculate the individual metrics characterizing system features which could then be used to produce recommendations for improvement. 
 The trust evaluation will facilitate decision-making, improve performance and increase accountability through the collection, 
 analysis, and reporting of relevant performance-related data. This design facilitates the framework extension through the 
@@ -32,20 +32,20 @@ inclusion of other metrics, as well as the ease of modification and improvement 
 Current implementation of this framework includes the following measures and functionality: 
 
 \begin{enumerate}
-\item The analysis of the installed applications through the application-specific meta-data provided by the Play store. Applications represent the largest security and privacy risk to a device and user's data. The data provided by the Play store leverages the experiences of millions of users and holds all data associated with the distribution of an application including its associated documentation. The Play store also provides meta-information about applications which gives useful characteristic data about an application. These data can be used to assess an individual application's risk. Rules were generated to classify each application into an impact class based on this meta-data. The combined trust classes of all applications installed on a device would be used to create a security risk rating for the whole device.
+\item the analysis of the installed applications through the application-specific meta-data provided by the Play store. Applications represent the largest security and privacy risk to a device and user's data. The data provided by the Play store leverages the experiences of millions of users and holds all data associated with the distribution of an application including its associated documentation. The Play store also provides meta-information about applications which gives useful characteristic data about an application. These data can be used to assess an individual application's risk. Rules were generated to classify each application into an impact class based on this meta-data. The combined trust classes of all applications installed on a device would be used to create a security risk rating for the whole device.
 
-\item The usage of security tools embedded into the operating system and proper preventative security practices.
+\item the usage of security tools embedded into the operating system and proper preventative security practices.
 Android provides users with many different tools which increase the security and privacy of their devices in addition to updates 
-to patch exposed vulnerabilities.  When properly used, these tools improve the security of the devices. They are 
+that patch exposed vulnerabilities.  When properly used, these tools improve the security of the devices. They are 
 intended to gather a 
-comprehensive overview of the software running on a mobile device by analyzing the operating system and user settings. 
-First the operating system is checked to confirm that it is running the most recent version available. Second the personal 
+comprehensive overview of the software running on a mobile device by analyzing the operating system version and user settings. 
+First, the operating system is checked to confirm that it is running the most recent version available. Second, the personal 
 security settings on the device are examined to determine if the user is utilizing the appropriate tools to secure the device. 
 These operating system verification checks are combined to generate a score, which is the output of the framework operation.
 
-\item The evaluation of trust  based on the level of privacy provided.  The greater the level of privacy, the more
+\item the evaluation of trust  based on the level of privacy provided.  The greater the level of privacy, the more
 trustworthy the device is.
-The spurious anomalous of a device's internal sensors can sometimes indicate the existence of a privacy/security problem 
+An anomalous value of a device's internal sensors can sometimes indicate the existence of a privacy/security problem 
 %Verifying the validity of the sensors can detect security and quality problems of the device 
 that would be missed by the other metrics. Most mobile devices now come equipped with a variety of sophisticated 
  sensors which are capable of  measurements of their surrounding environment. 
@@ -70,7 +70,7 @@ on the overall device security.
 
 
 Unlike other available tools, our framework has an umbrella structure that allows for integration of 
-diverse trust evaluation mechanisms and results through a rule-based classification system.
+diverse trust evaluation mechanisms by means of a rule-based classification system.
 This open architecture can also be extended to include 
  self-learning capabilities to allow for its optimization towards a particular device and a criteria set. Each of these procedures given above generates a rating, which is then integrated into the umbrella framework. This framework takes into account the varied landscape of mobile devices and is designed to be flexible and easily adaptable to a changing security environment. 
 Based on this design, the contribution of each of the procedures can be adjusted depending on the target.
@@ -108,12 +108,13 @@ they can be used in rules in combination with other data~\cite{jing2014riskmon}.
 
 Here are some examples of rules that are used: 
 \begin{itemize}
-  \item If number of downloads were low with low ratings, the
+  \item If number of downloads were low and had low ratings, the
     application was classified as low trust.
-  \item If the number of downloads were low with good application
-    score, the application was classified as moderate trust.
+  \item If the number of downloads were low and the application
+    score was good, the application was classified as moderate trust.
   \item If the application had low recent score it was classified as moderate trust
     stating that there was something wrong with the latest patch released by the developer.
+    \weiss{not sure I understand this}
   \item If the application was from a unknown publisher with low score
     and low number of downloads it was classified as low trust.
   \item If the application was from an unknown publisher with high
