@@ -1,4 +1,4 @@
-\documentclass{IEEEtran}
+\documentclass[conference]{IEEEtran}
 \usepackage{graphicx}
 \usepackage{verbatim}
 \usepackage{url}
@@ -37,22 +37,66 @@
 
 \begin{document}
 
-\title{Trust Evaluation in Mobile Devices: \\An Empirical Study\thanks{This work 
-was partially supported by NSF grants 1141341, 0834243, 
-1223588, 1205415, and 1241568.}}
-\author{Richard Weiss$^{\star}$, Leon Reznik$^*$, Yanyan Zhuang$^{\dag, \ddag}$, Andrew Hoffman$^*$\\
-Albert Rafetseder$^{\dag}$, Tao Li$^{\dag}$, Justin Cappos$^{\dag}$, \\
-$^{\star}$Evergreen College, $^*$Rochester Institute of Technology\\
-$^{\dag}$New York University, $^{\ddag}$University of British Columbia}
+\title{Trust Evaluation in Mobile Devices: \\An Empirical Study}
+%\author{Richard Weiss$^{\star}$, Leon Reznik$^*$, Yanyan Zhuang$^{\dag, \ddag}$, Andrew Hoffman$^*$\\
+%Albert Rafetseder$^{\dag}$, Tao Li$^{\dag}$, Justin Cappos$^{\dag}$, \\
+%$^{\star}$Evergreen College, $^*$Rochester Institute of Technology\\
+%$^{\dag}$New York University, $^{\ddag}$University of British Columbia}
+
+\author{\IEEEauthorblockN{Richard Weiss}
+\IEEEauthorblockA{Department of Computer Science\\
+Evergreen College\\
+Olympia, WA, USA\\
+Email: weissr@evergreen.edu}\\
+\IEEEauthorblockN{Andrew Hoffman}
+\IEEEauthorblockA{Department of Computer Science\\
+Rochester Institute of Technology\\
+Rochester, NY, USA\\
+Email: ??}\\
+\IEEEauthorblockN{Tao Li}
+\IEEEauthorblockA{Computer Science and Engineering\\
+New York University\\
+New York, NY, USA\\
+Email: litao.alex@gmail.com}
+\and
+
+\IEEEauthorblockN{Leon Reznik}
+\IEEEauthorblockA{Department of Computer Science\\
+Rochester Institute of Technology\\
+Rochester, NY, USA\\
+Email: lr@cs.rit.edu}\\
+\IEEEauthorblockN{Darrell Pollard}
+\IEEEauthorblockA{Department of Computer Science\\
+Rochester Institute of Technology\\
+Rochester, NY, USA\\
+Email: ??}
+\and
+
+\IEEEauthorblockN{Yanyan Zhuang}
+\IEEEauthorblockA{Computer Science and Engineering\\
+New York University\\
+New York, NY, USA\\
+Email: yyzh@nyu.edu}\\
+\IEEEauthorblockN{Albert Rafetseder}
+\IEEEauthorblockA{Computer Science and Engineering\\
+New York University\\
+New York, NY, USA\\
+Email: albert.rafetseder@univie.ac.at}\\
+\IEEEauthorblockN{Justin Cappos}
+\IEEEauthorblockA{Computer Science and Engineering\\
+New York University\\
+New York, NY, USA\\
+Email: jcappos@nyu.edu}
+}
 
 \maketitle
 
   
 \begin{abstract}
-A network of mobile systems is both complex and diverse.  This paper presents 
-system to evaluate the trustworthiness of the individual components as well as the entire system. 
+A network of mobile systems is both complex and diverse.  This paper presents a
+framework to evaluate the trustworthiness of the individual components in a mobile system, as well as the entire system. 
 The major components are applications, devices and networks of devices.  
-Given this diversity and multiple levels, we develop
+Given this diversity and multiple levels of a mobile system, we develop
 a hierarchical trust evaluation methodology, which enables the combination of trust metrics 
 and allows us to verify the trust metric for each component
 based on the trust metrics for others.
@@ -62,15 +106,15 @@ The methodology involves two stages: initial trust evaluation and trust verifica
 In the first stage, an expert rule system is used to produce trust metrics at the lowest level of
 the hierarchy.  In the second stage, the trust metrics are verified
 by comparing data from components and a trust evaluation is produced for the 
-combined system.  The paper presents the results of two empirical studies, in which 
+combined system.  This paper presents the results of two empirical studies, in which 
 this methodology is applied and tested. The first study involves 
 monitoring resource utilization and evaluating trust based on 
 resource consumption patterns. We measured battery voltage, CPU utilization and network communication
 for individual apps and detected anomalous behavior that could be indicative of malicious code.
 The second study involves verification of the trust evaluation by 
 comparing the data coming from two different devices: the 
-GPS location coming from an Android smartphone traveling in an automobile and the data from the speedometer
-sensor of the car.
+GPS location information from an Android smartphone traveling in an automobile and the data from the speedometer
+sensor of the same vehicle.
 % which can be used to decrease the trust evaluation of the smartphone if they are inconsistent.
 
 %Smartphones  are rich in sensors and network easily with other mobile devices and wearable computers.
@@ -128,6 +172,10 @@ data in a way that safeguards users' privacy.}  %end comment
 %\input{results}  
 \input{conclusion}
 
+\section*{Acknowledgement}
+This work was partially supported by NSF grants 1141341, 0834243, 
+1223588, 1205415, 1241568, and an NYU-AIG (American International Group)
+grant.
 
 % \section*{Acknowledgment}
 % Weiss was supported by the National Science Foundation through grant TUES-1141341 

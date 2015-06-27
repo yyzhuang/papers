@@ -5,7 +5,7 @@
 \label{fig:umbrella}
 \end{figure*}
 
-\section{FRAMEWORK UMBRELLA ARCHITECTURE AND DESIGN}
+\section{Framework Umbrella Architecture and Design}
 %This is a summary of section 2 in the Hoffman paper
 
 A hierarchical trust analysis can look at the entire system and combine measurements from multiple sources, making
@@ -112,9 +112,10 @@ Here are some examples of rules that are used:
     application was classified as low trust.
   \item If the number of downloads were low and the application
     score was good, the application was classified as moderate trust.
-  \item If the application had low recent score it was classified as moderate trust
-    stating that there was something wrong with the latest patch released by the developer.
-    \weiss{not sure I understand this}
+  \item If the application had lower recent score in comparison 
+  against the previous history scores, it was classified as moderate 
+  trust stating that there was something wrong with the latest patch 
+  released by the developer. 
   \item If the application was from a unknown publisher with low score
     and low number of downloads it was classified as low trust.
   \item If the application was from an unknown publisher with high

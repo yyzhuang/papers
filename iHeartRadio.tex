@@ -1,12 +1,13 @@
-\section{TRUST EVALUATION METRICS BASED ON TECHNOLOGICAL PARAMETERS}
+\section{Trust Evaluation Metrics Based on Technological Parameters}
 
-Anomalous behavior of a smartphone may be due to malicious exploit of an application,
-the operating system, or the hardware.
-In order to be able to detect this
-behavior, we first need to establish baseline measurements for 
-normal behavior. We focus on metrics that are observable 
-without requiring inspection of the app's source or binary code
-because obfuscation techniques are very sophisticated and will continue to be developed.
+Anomalous misbehavior of a smartphone may be due to malicious exploit 
+of an application, the operating system, or the hardware. In order to 
+detect these anomalies, we first need to establish baseline 
+measurements for normal behavior. In this paper, we complement the 
+standard debugging and anomaly detection techniques and focus on 
+metrics that could be obtained without inspection of the app’s source 
+or binary code because obfuscation techniques are very sophisticated 
+and will continue to be developed.
 We have enhanced some existing debugging techniques with additional parameter measurements to inspect app behavior.
 The three that we chose are battery voltage, CPU usage, and network usage, which are easy to collect.
 The following subsections describe how these three measurements can be linked to specific applications
@@ -81,20 +82,20 @@ finer-grained views as well. Assuming an app is not designed to
 evade or complicate debugging deliberately, the 
 \textit{Dalvik Debug Monitoring Service} (DDMS) 
 % https://developer.android.com/tools/debugging/ddms.html
-provides syscall-level insight.  
+provides insight at the system call level\footnote{In computing, a system call is how a program requests a service from an operating system's kernel. This may include hardware-related services (for example, accessing a hard disk drive), creation and execution of new processes, and communication with integral kernel services such as process scheduling~\cite{syscall}.}.  
 \eat{Even if an app is trying to evade reverse engineering,
  wouldn't it be hard to eliminate the frequency of syscalls?} % end commment
 
 Figure~\ref{fig:cpu-no-ad} shows a typical  
-session in Traceview, the execution log viewer.  The main thread is doing almost all of the work
-and making system calls.  Figure~\ref{fig:cpu-ad} shows what happens when a video ad starts 
+session in Traceview, an execution log viewer.  The main thread is doing almost all of the work
+and making system calls to request resources from the operating system.  Figure~\ref{fig:cpu-ad} shows what happens when a video ad starts 
 executing.  There is a dramatic change in activity and the main app thread is no longer 
 the primary, uniform consumer of CPU cycles.
 % Current figure (MD5 46fbce842e071dfb8f321c9645c6b411) courtesy of Tao Li.
 The app under scrutiny comprises several threads with different 
 temporal activity patterns. Some threads bear names indicative 
 of their performed functions. Colored bars in the threads' activity 
-timelines further detail call-level interactions with app and system 
+timelines further detail system-call-level interactions with app and system 
 libraries, with the height of sub-bars proportional to the frequency 
 of specific calls.  
 Other log views (not shown) list all of an app's threads, show the 
@@ -106,13 +107,17 @@ consumption, and relative usage.
 
 \subsection{Network usage}
 
-Android provides a number of built-in features allowing the observation 
+Android provides a number of built-in features that allow the observation 
 of a device's network conditions for any app granted the 
-\texttt{ACCESS\_NETWORK\_STATE} permission. 
-The \texttt{ConnectivityManager} class lets an app discover the 
+\texttt{ACCESS\_NETWORK\_STATE} permission. This permission 
+allows applications to access information about networks.
+The \texttt{ConnectivityManager} class, an Android class that 
+answers queries about the state of network connectivity and 
+network connectivity changes, lets an app discover the 
 current connectivity status and type (WiFi, 3G, Bluetooth, Ethernet)~\cite{che2011case}. 
-For cellular access such as LTE or 3G, the \texttt{TelephonyManager} 
-class makes available further detail. The stateful nature of cellular 
+For cellular access such as LTE or 3G, the Android \texttt{TelephonyManager} 
+class provides access to information about the telephony services on the 
+device and thus makes further details available. The stateful nature of cellular 
 data connectivity is reflected by various indicators of data activity, 
 thereby allowing any app to detect when other apps transfer data over 
 the cellular interface.  The Application Resource Optimizer project
@@ -125,7 +130,7 @@ essentially radio resource control (RRC-based type of diagnostics).
 %%% https://developer.android.com/reference/android/net/NetworkInfo.html#isConnected%28%29
 
 If the device is \textit{rooted} (i.e., system-level administrator 
-privileges are available to the user launching an app), standard 
+privileges are granted to the user launching an app), standard 
 packet tracing tools such as \texttt{tcpdump} can be used to 
 record the exact data transferred across network interfaces. 
 However, the precondition is not met on almost any commercial stock 
