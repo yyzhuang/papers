@@ -6,37 +6,37 @@ sold has surpassed the number of laptops, reaching 1.3 billion in
 reported to have more than a billion active users of 
 Android-based devices~\cite{android-users}.  
 As their popularity increases, so does their value as
-a target for malware injection.  
+a target for malware.  
 This is particularly true for low cost smartphones sold in developing countries. According to \cite{zheng2014droidray}
-some vendors there intentionally create conditions facilitating various security violations in these devices.
- There are many possible risks, associated with using compromised devices.  Nowadays due to universal interconnectivity and 
-interdependence the 
-possible compromise of a mobile device will affect not only applications executed on it and its users but all other parts 
-of a networked computer and communication infrastructure.
+some vendors there intentionally create conditions facilitating various security violations on these devices.
+ There are many possible risks associated with using compromised devices.  Nowadays due to universal interconnectivity and 
+interdependence between devices and networks, the 
+possible compromise of a mobile device will affect not only applications on it and its users, but all other 
+networked computers and communication infrastructure.
 \eat {There are many possible risks.
 Many people use smartphones for financial transactions. 
  Attackers could get personal information for systems administrators and CIOs from their phones and 
  use that for spear phishing.  mention security and privacy issues}  % end comment
-With the development of the mobile communication platforms, which share different devices resources, applications and data, 
-this trend will become stronger and stronger. 
+With the development of the mobile communication platforms that share different devices resources, applications and data, 
+vulnerabilities and security threat will become much more wide-spread. 
 
-In order for mobile devices such as smartphones to communicate with each other, download apps and preserve security,
+In order for mobile devices such as smartphones to communicate with each other and download apps securely,
 they need to be able to compute trust metrics.   Trust can be modeled at 
-multiple levels, e.g. an application, a device (hardware and software), or a network of devices.  Ultimately, our goal
+multiple levels, e.g. at the application level, on a device (hardware and software), or among a network of devices.  Ultimately, our goal
 is to integrate these metrics into a single conceptual framework so that we can reason about complex systems at a  
-higher level, and we can also use them to verify trust metrics for individual components.
+higher level, and we can also use them to verify trust for individual components.
 The trust evaluation  could 
 be applied to optimize data collection and communication schemes in order to satisfy multiple criteria such as 
 data quality, overall
-system performance and/or resource consumption, subject to constraints based on security and privacy requirements.
+system performance and/or resource consumption, subject to the constraints based on security and privacy requirements.
 Also, the user of a device may benefit from the trust evaluation as it might 
-provide useful information about areas in need of improvement, and it could be combined with other techniques for
+provide useful information about areas in need of improvement. The trust evaluation could also be combined with other techniques for
  non-signature based intrusion detection.
 
 The more sophisticated mobile devices become, the more complex the threat model is, and the more opportunities there 
 are for vulnerabilities to appear.  Trust evaluation should be sensitive to the detection of viruses and other 
 malicious agents in a system.
-However, finding viruses and other malware using software signatures is less and less likely to
+However, finding viruses and other malware using software signatures is less likely to
 work.  Signature based intrusion detection systems have to be complemented with a system-wide  approach that 
 involves assessing trust for the different
 components by detecting anomalies in sensor-originated data.
@@ -85,14 +85,15 @@ metrics and facilitates both self-evaluation for a particular device as well as 
 diverse devices and applications. 
 The paper describes the version developed for Android-based devices.
 
-Section II describes the framework design principles and an overall architecture. Also, this section 
+The rest of this paper is organized as follows. 
+Section~\ref{sec-umbrella} describes the framework design principles and an overall architecture. Also, this section 
  briefly describes a few of the trust evaluation metrics developed for individual apps and
-smartphones that are included in the current implementation,
-while more details about a few of them are provided in sections III-V. In particular, section III discusses metrics 
-for individual apps based on measuring resource utilization such as voltage supply, CPU and network bandwidth usage,
+smartphones that are included in the current implementation.
+Details about a few of the trust evaluation metrics are provided in Section~\ref{sec-iheart}--\ref{sec:geolocation}. In particular, Section~\ref{sec-iheart} discusses metrics 
+for individual apps based on measuring resource utilization such as battery voltage, CPU and network bandwidth usage,
 which can be done on the smartphone.
-Section IV describes metrics based on multiple sensors that impact the level of privacy supported, and how 
+Section~\ref{sec:blursense} describes metrics based on multiple sensors that impact the level of privacy supported, and how 
 privacy-enhancing tools can interact with trust evaluation.
-Section V discusses the possible ways in which trust evaluation can be verified and adjusted, based on multiple sources
-of data.  In particular, we show data collected simultaneously from a smartphone and the speedometer of an 
-automobile.
+Section~\ref{sec:geolocation} discusses the possible ways in which trust evaluation can be verified and adjusted, based on multiple sources
+of data.  In particular, we show that data collected simultaneously from a smartphone and the speedometer of an 
+automobile can be used in trust evaluation.
