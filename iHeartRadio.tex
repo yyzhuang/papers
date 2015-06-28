@@ -23,7 +23,9 @@ under general, non-lab conditions.
 If the circumstances can be controlled tightly, then approaches like 
 \textit{Eprof} \cite{pathak2012fine} can be used to estimate energy consumption 
 of individual activities and assign credit to likely originators.  In the following experiment,
-the battery voltage was measured both with and without video ads.
+the battery voltage was measured both with and without video ads.  The battery voltages were used to
+deduce the current being drawn from the battery, and the data are reported in
+units of current.
 The ​baseline is the battery consumption for a music app.
 This was recorded for 15 seconds and 60 seconds.  Then, the measurement was repeated
 with both video ads and the music app.  The video ads were only running for the first 15 seconds.
@@ -60,7 +62,7 @@ The ad was 15 seconds.}
 \begin{figure*}[ht]
 \centering
 \includegraphics[width=6in]{no_AdsDisplay_10s.png}
-\caption{A typical session in Traceview, the execution log viewer.
+\caption{The Traceview log shows that the
 WebViewCoreThread is busy, but main thread's workload is very light.  main is responsible for 
 the user interface, in general.  WebView is responsible for rendering ads using the webkit library}
 \label{fig:cpu-no-ad}
@@ -69,7 +71,7 @@ the user interface, in general.  WebView is responsible for rendering ads using 
 \begin{figure*}[ht]
 \centering
 \includegraphics[width=6in]{traceview.png}
-\caption{A session in Traceview, with anomalous Ads.  Notice that main is doing much more work and
+\caption{A trace of the same App with anomalous Ads.  Notice that main is doing much more work and
 there are other threads that are getting significant CPU time.}
 \label{fig:cpu-ad}
 \end{figure*}
