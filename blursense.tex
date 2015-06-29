@@ -9,7 +9,7 @@ one can apply trust metrics to automate the application of Blursense itself.  Fo
 then BlurSense can restrict the sensor data that the app has access to.
 
 \subsection{Motivation}
-Although the sensing capabilities enhance the convenience of user interfaces and
+Although the sensing capabilities of smartphones enhance the convenience of user interfaces and
 application usefulness, they also raise serious privacy
 concerns~\cite{shabtai2010google}. For instance, through accessing sensor data,
 malicious applications could retrieve sensitive information about the mobile
@@ -61,15 +61,15 @@ not malicious and is not more vulnerable than the standard one.
 
 The BlurSense project deals with this problem of fine-grained conrol of sensor data
 by requiring that all untrusted apps be installed
-through an app that filters sensor data through a reference monitor~\cite{cappos2014blursense}.  
-(See Figure~\ref{Fig:design})
+through an app that filters sensor data through a reference monitor~\cite{cappos2014blursense}, 
+as shown in Figure~\ref{Fig:design}.
 The policy for filtering can be set by the user based on a trust metric.
  The reference
 monitor can exercise fine-grained control to degrade the accuracy of the sensor data, render it 
 completely meaningless, or pass it through unchanged.  
 In the case of geolocation, GPS measurements can be set to the center of the nearest
 large city or random noise can be added.  Another approach would be to allow the user to decide
-whether to in stall the app or not, based on the trust evaluation 
+whether to install the app or not, based on the trust evaluation. 
 %based on the sensor data requested in the manifest file.
 The reference monitor approach poses less risk than others; the worst that can happen is
 that the app will have the same access to the sensor data that
@@ -77,8 +77,8 @@ is permitted by the manifest file. In the best case, BlurSense
 would limit the access to sensor data based on a combination of trust metrics for the app.
 BlurSense is currently able to filter data on battery level, CPU usage, geolocation (latitude, longitude,
 altitude, accuracy, and speed if available), and network related measurements
-(mobile network type and operator, nearby WiFi access point
-and Bluetooth devices).
+such as mobile network type and operator, nearby WiFi access point
+and Bluetooth devices.
 
 \eat{
 Currently, implemented sensor modules and
