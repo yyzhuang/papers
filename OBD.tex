@@ -23,8 +23,8 @@ To deploy such a process on a mobile device, a device owner first installs an
 app~\cite{sensor-app} on their device\footnote{Currently, Android smartphones 
 and tablets are supported.}. Since we are interested in
 vehicular data, the target group of device owners are also the vehicle 
-owners. An owner simply inserts a WiFi On-Board Diagnostics 
-(OBD)~\cite{obd} sensor into the car's OBD port (located under the steering wheel),  
+owners. An owner simply inserts a WiFi 
+OBD~\cite{obd} sensor into the car's OBD port (located under the steering wheel),  
 %\linda{I don't think they insert their sensor into the car. Do they insert it into something specific in the car (e.g., a usb port)? That would make sense. Anyway, I think you need to be more specific in stating what gets connected to what} 
 and connect a 
 smartphone or tablet to the sensor, which also runs as a WiFi access 
@@ -34,9 +34,9 @@ on the road today~\cite{obdconnector}.
 infrastructure does not require extra installation of specialized  
 hardware or equipment~\cite{reininger2015first}. } % end comment
 Trust evaluation could be used to determine if the phone should trust the car,
-vice versa, as well as whether the user should trust the combined system.
+or vice versa, as well as whether the user should trust the combined system.
 
-The vehicular data is uploaded by the app
+The vehicular data is uploaded to a remote server by the app
 which runs in the background of the mobile device and communicates
 with an in-vehicle OBD sensor. The device owner need not worry about having to
 interact with the app or about being interrupted while using the smartphone. 
@@ -52,10 +52,10 @@ affect the rest of the user device~\cite{Cappos_CCS_10}.
 
 At the remote server, the vehicular sensor data collected from 
 multiple end user devices is stored in a non-relational database. 
-The collected data is stored in JSON format, as shown in Figure~/ref{fig:json}.
+The collected data is stored in JSON format.
 The collected data set can be visualized on Google Maps to 
-identify fuel efficient routes, routes with higher traffic activity, 
-but it could also be used to detect reckless or illegal driving behaviors,
+identify fuel efficient routes, routes with higher traffic activity.
+Furthermore, the data set could also be used to detect reckless or illegal driving behaviors,
 in which case trust metrics would be significant.
 
 \eat{
@@ -130,7 +130,7 @@ STD & 12.79~kph & 13.61~kph & 4.57~kph  \\ \hline
 
 \begin{figure}
 \centering
-\includegraphics[width=3.5in]{speed.png}
+\includegraphics[width=4in]{speed.png}
 \caption{Speed difference and accuracy.}
 \label{fig:speed-diff}
 \end{figure}
@@ -144,14 +144,14 @@ The overall statistics do not show any anomaly in speed. However, when plotting
 individual data samples, we can see a data outlier in Figure~\ref{fig:speed-diff}. 
 Excluding this point, the rest of the data samples roughly follow a Gaussian 
 distribution. This outlier seems to be due to the initialization of the
-GPS sensor.  Initially, the GPS parameters are underconstrained leading to a large 
-geolocation error, which is rapidly reduced as more measurements are made.
+GPS sensor.  Initially, the GPS parameters are underconstrained, leading to a large 
+geolocation error that is then rapidly reduced as more measurements are made.
 
 
 \begin{figure}
 \centering
-\includegraphics[width=3.5in]{car.png}
-\caption{A typical session in Traceview, the execution log viewer.}
+\includegraphics[width=4in]{car.png}
+\caption{The difference between the OBD sensor speed and GPS speed decreases slightly as vehicle speed increases.}
 \label{fig:car}
 \end{figure}
 
@@ -166,13 +166,13 @@ A minimum mean square error (MMSE) linear fit is shown in the figure.
 
 \begin{figure}
 \centering
-\includegraphics[width=3.5in]{time.png}
-\caption{A typical session in Traceview, the execution log viewer.}
+\includegraphics[width=4in]{time.png}
+\caption{After the initialization of the GPS sensor, the difference between the  OBD sensor speed and GPS speed remains between 0 and 12~kph.}
 \label{fig:time}
 \end{figure}
 
-We also investigate the speed differences over time. 
-In Figure~\ref{fig:time}, we can conclude that excluding the outlier, 
+We also investigate the vehicle and GPS speed differences over time, as shown
+in Figure~\ref{fig:time}. From the figure, we can conclude that excluding the outlier, 
 the differences between 
 vehicle speed and GPS speed fluctuate around a constant value over 
 time. 
